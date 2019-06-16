@@ -1,5 +1,5 @@
 package dynamicProgramming
 
-class RoadCutSpec {
+class CutRodSpec {
 
 }
