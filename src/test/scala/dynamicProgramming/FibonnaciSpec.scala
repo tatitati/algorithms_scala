@@ -27,7 +27,7 @@ class FibonnaciSpec extends FunSuite with BeforeAndAfterEach {
     assert(fib(4) === 3)
   }
 
-  test("fibonnaci BOTOM-TOP (no recursive)") {
+  test("fibonnaci BOTOM-TOP with memoization (no recursive)") {
 
     def fib(n: Int): Int = {
       Memoizator.add(Map(0 -> 0))
@@ -40,7 +40,7 @@ class FibonnaciSpec extends FunSuite with BeforeAndAfterEach {
           )
         )
       }
-      
+
       Memoizator.get(n)
     }
 
