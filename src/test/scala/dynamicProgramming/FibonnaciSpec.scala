@@ -40,7 +40,7 @@ class FibonnaciSpec extends FunSuite with BeforeAndAfterEach {
           )
         )
       }
-
+      
       Memoizator.get(n)
     }
 
