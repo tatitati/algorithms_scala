@@ -18,4 +18,8 @@ object Memoizator {
   def clear(): Unit = {
     cache = Map()
   }
+
+  def printcache() = {
+    println(cache)
+  }
 }
