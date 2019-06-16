@@ -10,7 +10,12 @@
 
 ## Dynamic Programming
 - [x] ~Fibonnaci TOP-DOWN with memoization~
-- [ ] Fibonnaci Down-Top
+- [x] ~Fibonnaci Down-Top~
+- [x] ~Fibonnaci Top-Down~
+- [ ] Change coins
+- [ ] Cutting rod
+- [ ] ....
+
 
 ## Search
 
