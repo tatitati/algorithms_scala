@@ -9,7 +9,8 @@
 ## Graphs
 
 ## Dynamic Programming
-- [ ] Fibonnaci
+- [x] ~Fibonnaci TOP-DOWN with memoization~
+- [ ] Fibonnaci Down-Top
 
 ## Search
 
