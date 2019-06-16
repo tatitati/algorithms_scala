@@ -5,7 +5,7 @@ import org.scalatest.{BeforeAndAfterEach, FunSuite}
 
 class FibonnaciSpec extends FunSuite with BeforeAndAfterEach {
 
-  test("fibonnaci TOP-DOWN with moemoization") {
+  test("fibonnaci TOP-DOWN with moemoization (recursive)") {
 
     def fib(n: Int): Int = {
       Memoizator.exist(n) match {
@@ -27,7 +27,7 @@ class FibonnaciSpec extends FunSuite with BeforeAndAfterEach {
     assert(fib(4) === 3)
   }
 
-  test("fibonnaci BOTOM-TOP") {
+  test("fibonnaci BOTOM-TOP (no recursive)") {
 
     def fib(n: Int): Int = {
       Memoizator.add(Map(0 -> 0))
