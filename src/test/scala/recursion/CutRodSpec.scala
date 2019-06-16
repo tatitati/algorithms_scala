@@ -13,9 +13,6 @@ class CutRodSpec extends FunSuite {
           case _ => {
             for(i <- 1 to length) {
               revenue = List(revenue, prices(i) + cutRod(prices, length - i)).max
-              println("length: " + length )
-              println("revenue: " + revenue )
-              println("======")
             }
 
             revenue
@@ -39,8 +36,10 @@ class CutRodSpec extends FunSuite {
         10->30
       )
 
-
-      assert(cutRod(lengthMapRevenue, 7) === 18)
+      assert(
+        cutRod(lengthMapRevenue, 7) === 18,
+        "I can get the max revenue for a length after cutting, however I don't know how long are these pieces"
+      )
     }
 
 
