@@ -24,32 +24,28 @@ object Memoizator {
 
 class FibonnaciSpec extends FunSuite with BeforeAndAfterEach {
 
-  private def fib(n: Int): Int = {
-    Memoizator.exist(n) match {
-      case true => Memoizator.get(n)
-      case false => n match {
-        case 0 => 0
-        case 1 => 1
-        case _ => {
-          val result = fib(n-1) + fib(n-2)
-          Memoizator.add(Map(n -> result))
-          result
+  test("fibonnaci TOP-DOWN with moemoization") {
+
+    def fib(n: Int): Int = {
+      Memoizator.exist(n) match {
+        case true => Memoizator.get(n)
+        case false => n match {
+          case 0 => 0
+          case 1 => 1
+          case _ => {
+            val result = fib(n-1) + fib(n-2)
+            Memoizator.add(Map(n -> result))
+            result
+          }
         }
       }
     }
-  }
 
-  test("fibonnaci for n=1") {
     assert(fib(1) === 1)
-  }
-
-  test("fibonnaci for n=2") {
     assert(fib(2) === 1)
-  }
-
-  test("fibonnaci for n=4") {
     assert(fib(4) === 3)
   }
+
 
   override def beforeEach(): Unit = {
     Memoizator.clear()
