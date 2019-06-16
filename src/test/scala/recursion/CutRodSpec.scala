@@ -6,23 +6,7 @@ class CutRodSpec extends FunSuite {
 
     test("cut rod") {
 
-      def cutRod(prices: Map[Int, Int], length: Int): Int = {
-        var revenue = 0
-        length match {
-          case 0 => 0
-          case _ => {
-            for(i <- 1 to length) {
-              revenue = List(revenue, prices(i) + cutRod(prices, length - i)).max
-            }
-
-            revenue
-          }
-        }
-      }
-
-
-
-      val lengthMapRevenue = Map(
+      val revenueByLength: Map[Int, Int] = Map(
         // length -> revenue
         1->1,
         2->5,
@@ -36,8 +20,27 @@ class CutRodSpec extends FunSuite {
         10->30
       )
 
+      def cutRod(length: Int): Int = {
+        var revenue = 0
+        length match {
+          case 0 => 0
+          case _ => {
+            for(cutLength <- 1 to length) {
+              revenue = List(
+                revenue,
+                revenueByLength(cutLength) + cutRod(length - cutLength)
+              ).max
+            }
+
+            revenue
+          }
+        }
+      }
+
+
+
       assert(
-        cutRod(lengthMapRevenue, 7) === 18,
+        cutRod(8) === 22,
         "I can get the max revenue for a length after cutting, however I don't know how long are these pieces"
       )
     }
