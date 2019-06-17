@@ -10,6 +10,7 @@
 
 - [x] ~Laberinth resolver~
 - [ ] Sudoku resolver
+- [ ] ADN sequence
 
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
