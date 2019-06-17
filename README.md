@@ -4,6 +4,8 @@
 - [x] ~Fibonnaci~
 - [ ] ...
 
+https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursion
+
 ## Trees
 
 ## Bactracking
@@ -30,6 +32,8 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Napsack
 - [ ] Matrix multiplication
 - [ ] ....
+
+https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming
 
 ## Clustering
 
