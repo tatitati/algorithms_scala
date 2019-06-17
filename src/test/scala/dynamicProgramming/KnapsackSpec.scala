@@ -2,6 +2,8 @@ package dynamicProgramming
 
 import org.scalatest.FunSuite
 
+import scala.collection.mutable.ListBuffer
+
 class KnapsackSpec extends FunSuite {
 
   case class Item(
@@ -30,19 +32,19 @@ class KnapsackSpec extends FunSuite {
   def initMatrix(
           items: List[Item],
           subBags: List[Int]
-      ): Map[String, List[Cell]] = {
+      ): List[List[Cell]] = {
 
     val emptyCell = Cell(List())
-    var matrix = Map[String, List[Cell]]()
+    var matrix = ListBuffer[List[Cell]]() // List is immutable!!!!!
     for(item <- items) {
-      matrix += item.name -> List.fill(subBags.size)(emptyCell)
+      matrix += List.fill(subBags.size)(emptyCell)
     }
-    matrix
+    matrix.toList
   }
 
   def findCell(
-          matrix: Map[String, List[Cell]],
-          position: Map[String, Int])
+          matrix: List[List[Cell]],
+          position: Map[Int, Int])
       : Cell = {
     val itemName = position.keys.head
     val cellColumn = position.values.head
@@ -59,10 +61,10 @@ class KnapsackSpec extends FunSuite {
       List(1,2,3,4)
     )
 
-    assert(matrix === Map(
-      "guitar" -> List(emptyCell,emptyCell,emptyCell,emptyCell),
-      "stereo" -> List(emptyCell,emptyCell,emptyCell,emptyCell),
-      "laptop" -> List(emptyCell,emptyCell,emptyCell,emptyCell)
+    assert(matrix === List(
+      List(emptyCell,emptyCell,emptyCell,emptyCell),
+      List(emptyCell,emptyCell,emptyCell,emptyCell),
+      List(emptyCell,emptyCell,emptyCell,emptyCell)
     ))
   }
 
@@ -71,22 +73,22 @@ class KnapsackSpec extends FunSuite {
     val emptyCell = Cell(List())
     val givenGuitar = Item("guitar", 1, 1500)
     val givenStereo = Item("stereo", 4, 3000)
-    val givenMatrix = Map(
-      "guitar" -> List(emptyCell,Cell(List(givenGuitar)),   emptyCell,                            emptyCell),
-      "stereo" -> List(emptyCell,emptyCell,                 Cell(List(givenGuitar, givenStereo)), emptyCell),
-      "laptop" -> List(emptyCell,emptyCell,                 emptyCell,                            emptyCell)
+    val givenMatrix = List(
+      List(emptyCell,Cell(List(givenGuitar)),   emptyCell,                            emptyCell),
+      List(emptyCell,emptyCell,                 Cell(List(givenGuitar, givenStereo)), emptyCell),
+      List(emptyCell,emptyCell,                 emptyCell,                            emptyCell)
     )
 
     assert(
-      Cell(List(givenGuitar, givenStereo)) === findCell(givenMatrix, Map("stereo" -> 2))
+      Cell(List(givenGuitar, givenStereo)) === findCell(givenMatrix, Map(1 -> 2))
     )
 
     assert(
-      Cell(List(givenGuitar)) === findCell(givenMatrix, Map("guitar" -> 1))
+      Cell(List(givenGuitar)) === findCell(givenMatrix, Map(0 -> 1))
     )
 
     assert(
-      Cell(List()) === findCell(givenMatrix, Map("laptop" -> 1))
+      Cell(List()) === findCell(givenMatrix, Map(2 -> 1))
     )
   }
 
