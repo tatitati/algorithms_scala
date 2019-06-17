@@ -11,7 +11,7 @@ class KnapsackSpec extends FunSuite {
                    val weight: Int,
                    val value: Int
   )
-  case class Cell(val items: List[Item]) {
+  case class Cell(val items: ListBuffer[Item]) {
     def getTotalValue(): Int = {
         var value = 0
         for(item <- items) {
@@ -32,27 +32,41 @@ class KnapsackSpec extends FunSuite {
   def initMatrix(
           items: List[Item],
           subBags: List[Int]
-      ): List[List[Cell]] = {
+      ): ListBuffer[ListBuffer[Cell]] = {
 
-    val emptyCell = Cell(List())
-    var matrix = ListBuffer[List[Cell]]() // List is immutable!!!!!
+    val emptyCell = Cell(ListBuffer())
+    var matrix = ListBuffer[ListBuffer[Cell]]() // List is immutable!!!!!
     for(item <- items) {
-      matrix += List.fill(subBags.size)(emptyCell)
+      matrix += ListBuffer.fill(subBags.size)(emptyCell)
     }
-    matrix.toList
+    matrix
   }
 
   def findCell(
-          matrix: List[List[Cell]],
+          matrix: ListBuffer[ListBuffer[Cell]],
           position: Map[Int, Int])
       : Cell = {
-    val itemName = position.keys.head
-    val cellColumn = position.values.head
-    matrix(itemName)(cellColumn)
+    val rowIndex = position.keys.head
+    val columnIndex = position.values.head
+    matrix(rowIndex)(columnIndex)
+  }
+
+  def updateCell(
+          cell: Cell,
+          matrix: ListBuffer[ListBuffer[Cell]],
+          position: Map[Int, Int]
+      ): ListBuffer[ListBuffer[Cell]] = {
+    val rowIndex = position.keys.head
+    val columnIndex = position.values.head
+
+    val row = matrix(rowIndex)
+    val updatedRow = row.updated(columnIndex, cell)
+    val matrixUpdated = matrix.updated(rowIndex, updatedRow)
+    matrixUpdated
   }
 
   test("init matrix") {
-    val emptyCell = Cell(List())
+    val emptyCell = Cell(ListBuffer())
     val givenGuitar = Item("guitar", 1, 1500)
     val givenStereo = Item("stereo", 4, 3000)
     val givenLaptop = Item("laptop", 3, 2000)
@@ -61,36 +75,54 @@ class KnapsackSpec extends FunSuite {
       List(1,2,3,4)
     )
 
-    assert(matrix === List(
-      List(emptyCell,emptyCell,emptyCell,emptyCell),
-      List(emptyCell,emptyCell,emptyCell,emptyCell),
-      List(emptyCell,emptyCell,emptyCell,emptyCell)
+    assert(matrix === ListBuffer(
+      ListBuffer(emptyCell,emptyCell,emptyCell,emptyCell),
+      ListBuffer(emptyCell,emptyCell,emptyCell,emptyCell),
+      ListBuffer(emptyCell,emptyCell,emptyCell,emptyCell)
     ))
   }
 
   test("can extract an specific cell") {
 
-    val emptyCell = Cell(List())
+    val emptyCell = Cell(ListBuffer())
     val givenGuitar = Item("guitar", 1, 1500)
     val givenStereo = Item("stereo", 4, 3000)
-    val givenMatrix = List(
-      List(emptyCell,Cell(List(givenGuitar)),   emptyCell,                            emptyCell),
-      List(emptyCell,emptyCell,                 Cell(List(givenGuitar, givenStereo)), emptyCell),
-      List(emptyCell,emptyCell,                 emptyCell,                            emptyCell)
+    val givenMatrix = ListBuffer(
+      ListBuffer(emptyCell,Cell(ListBuffer(givenGuitar)), emptyCell,                                  emptyCell),
+      ListBuffer(emptyCell,emptyCell,                     Cell(ListBuffer(givenGuitar, givenStereo)), emptyCell),
+      ListBuffer(emptyCell,emptyCell,                     emptyCell,                                  emptyCell)
     )
 
     assert(
-      Cell(List(givenGuitar, givenStereo)) === findCell(givenMatrix, Map(1 -> 2))
+      Cell(ListBuffer(givenGuitar)) === findCell(givenMatrix, Map(0 -> 1))
     )
 
     assert(
-      Cell(List(givenGuitar)) === findCell(givenMatrix, Map(0 -> 1))
+      Cell(ListBuffer(givenGuitar, givenStereo)) === findCell(givenMatrix, Map(1 -> 2))
     )
 
     assert(
-      Cell(List()) === findCell(givenMatrix, Map(2 -> 1))
+      Cell(ListBuffer()) === findCell(givenMatrix, Map(2 -> 1))
     )
   }
 
+  test("can update an specific cell") {
+
+    val emptyCell = Cell(ListBuffer())
+    val givenMatrix = ListBuffer(
+      ListBuffer(emptyCell,emptyCell,emptyCell,emptyCell),
+      ListBuffer(emptyCell,emptyCell,emptyCell,emptyCell),
+      ListBuffer(emptyCell,emptyCell,emptyCell,emptyCell)
+    )
+
+    val withGitar = Item("guitar", 1, 1500)
+    val withStereo = Item("stereo", 4, 3000)
+    val withCell = Cell(ListBuffer(withGitar, withStereo))
+    val matrixUpdated = updateCell(withCell, givenMatrix, Map(1->2))
+
+    assert(
+      findCell(matrixUpdated, Map(1->2)) === withCell
+    )
+  }
 
 }
