@@ -6,6 +6,12 @@
 
 ## Trees
 
+## Bactracking
+
+- [x] ~Laberinth resolver~
+- [ ] Sudoku resolver
+https://github.com/tatitati/algorithms/tree/master/Backtracking
+
 ## Graphs
 
 ## Dynamic Programming
@@ -20,5 +26,14 @@
 
 ## Search
 
+- [x] ~Binary search~
+https://github.com/tatitati/algorithms/tree/master/Search
+
 ## Sort
 
+- [x] ~Bubble sort~
+- [x] ~Insertio sort~
+- [x] ~Merge sort~
+- [x] ~Quick sort~
+- [x] ~Selection sort~
+https://github.com/tatitati/algorithms/tree/master/Sort
