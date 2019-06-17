@@ -10,9 +10,16 @@
 
 - [x] ~Laberinth resolver~
 - [ ] Sudoku resolver
+
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
 ## Graphs
+
+- [ ] Dijkstra (need queue + linked lists)
+- [ ] Breath first
+- [ ] Depth first
+- [ ] Bellman Ford
+
 
 ## Dynamic Programming
 - [x] ~Fibonnaci Down-Top~
@@ -23,10 +30,14 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Matrix multiplication
 - [ ] ....
 
+## Clustering
+
+- [ ] K-means
 
 ## Search
 
 - [x] ~Binary search~
+
 https://github.com/tatitati/algorithms/tree/master/Search
 
 ## Sort
@@ -36,4 +47,7 @@ https://github.com/tatitati/algorithms/tree/master/Search
 - [x] ~Merge sort~
 - [x] ~Quick sort~
 - [x] ~Selection sort~
+- [ ] Bucket
+- [ ] Radix
+
 https://github.com/tatitati/algorithms/tree/master/Sort
