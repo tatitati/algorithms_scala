@@ -28,14 +28,14 @@ class KnapsackSpec extends FunSuite {
   }
 
   def initMatrix(
-          nameItems: List[String],
+          items: List[Item],
           subBags: List[Int]
       ): Map[String, List[Cell]] = {
 
     val emptyCell = Cell(List())
     var matrix = Map[String, List[Cell]]()
-    for(nameItem <- nameItems) {
-      matrix += nameItem -> List.fill(subBags.size)(emptyCell)
+    for(item <- items) {
+      matrix += item.name -> List.fill(subBags.size)(emptyCell)
     }
     matrix
   }
@@ -51,8 +51,11 @@ class KnapsackSpec extends FunSuite {
 
   test("init matrix") {
     val emptyCell = Cell(List())
+    val givenGuitar = Item("guitar", 1, 1500)
+    val givenStereo = Item("stereo", 4, 3000)
+    val givenLaptop = Item("laptop", 3, 2000)
     val matrix = initMatrix(
-      List("guitar", "stereo", "laptop"),
+      List(givenGuitar, givenStereo, givenLaptop),
       List(1,2,3,4)
     )
 
