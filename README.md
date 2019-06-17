@@ -4,7 +4,7 @@
 - [x] ~Fibonnaci~
 - [ ] ...
 
-
+## Trees
 
 ## Graphs
 
@@ -14,13 +14,11 @@
 - [ ] Change coins
 - [ ] Cutting rod
 - [ ] Napsack
+- [ ] Matrix multiplication
 - [ ] ....
 
 
 ## Search
 
 ## Sort
-
-## Memoization
-
 
