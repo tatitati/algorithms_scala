@@ -29,7 +29,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [x] ~Fibonnaci Top-Down~
 - [ ] Change coins
 - [ ] Cutting rod
-- [ ] Napsack
+- [ ] Napsack :fire:
 - [ ] Matrix multiplication
 - [ ] ....
 
