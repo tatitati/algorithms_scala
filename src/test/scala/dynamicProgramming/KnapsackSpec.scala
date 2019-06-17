@@ -40,7 +40,7 @@ class KnapsackSpec extends FunSuite {
     matrix
   }
 
-  def getCell(
+  def findCell(
           matrix: Map[String, List[Cell]],
           position: Map[String, Int])
       : Cell = {
@@ -78,15 +78,15 @@ class KnapsackSpec extends FunSuite {
     )
 
     assert(
-      Cell(List(givenGuitar, givenStereo)) === getCell(givenMatrix, Map("stereo" -> 2))
+      Cell(List(givenGuitar, givenStereo)) === findCell(givenMatrix, Map("stereo" -> 2))
     )
 
     assert(
-      Cell(List(givenGuitar)) === getCell(givenMatrix, Map("guitar" -> 1))
+      Cell(List(givenGuitar)) === findCell(givenMatrix, Map("guitar" -> 1))
     )
 
     assert(
-      Cell(List()) === getCell(givenMatrix, Map("laptop" -> 1))
+      Cell(List()) === findCell(givenMatrix, Map("laptop" -> 1))
     )
   }
 
