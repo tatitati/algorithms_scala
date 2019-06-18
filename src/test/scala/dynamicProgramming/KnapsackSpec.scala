@@ -6,34 +6,65 @@ import scala.collection.mutable.ListBuffer
 
 class KnapsackSpec extends FunSuite {
 
-  case class Item(
-                   val name: String,
-                   val weight: Int,
-                   val value: Int
-  )
-  case class Cell(val items: ListBuffer[Item], limitWeight: Int) {
-    def getTotalValue(): Int = {
-        var value = 0
-        for(item <- items) {
-          value += item.value
-        }
-        value
-      }
+  case class Item(val name: String, val weight: Int, val value: Int)
 
-    def usedWeight(): Int = {
-        var weight = 0
-        for(item <- items) {
-          weight += item.weight
-        }
-        weight
+  object Cell {
+    def apply(items: ListBuffer[Item], limitWeight: Int): Cell = {
+      new Cell(items, limitWeight)
+    }
+  }
+
+  class Cell() {
+    private var usedWeight: Int = 0
+    private var limitWeight: Int = 0
+    private var totalValue: Int = 0
+    private var items: ListBuffer[Item] = ListBuffer()
+
+    def this(newItems: ListBuffer[Item], newlimitWeight: Int) = {
+      this()
+      this.limitWeight = newlimitWeight
+      for(newitem <- newItems) {
+        this.add(newitem)
+      }
+    }
+
+    override def equals(obj: Any): Boolean = {
+      obj.toString === this.toString()
+    }
+
+    override def toString(): String = {
+      s"""
+         |      totalValue: $totalValue
+         |      limitWeight: $limitWeight
+         |      usedWeight: $usedWeight
+         |      items:
+         |            $items
+       """.stripMargin
+    }
+
+
+    def getTotalValue(): Int = {
+        totalValue
+    }
+
+    def getUsedWeight(): Int = {
+        usedWeight
     }
 
     private def unusedWeight(): Int = {
-      limitWeight - usedWeight()
+      limitWeight - usedWeight
     }
 
     def itemFits(item: Item): Boolean = {
       unusedWeight() >= item.weight
+    }
+
+    def add(item: Item): Unit = {
+      if(itemFits(item)) {
+        this.items += item
+        this.usedWeight += item.weight
+        this.totalValue += item.value
+      }
     }
   }
 
@@ -104,6 +135,7 @@ class KnapsackSpec extends FunSuite {
     )
 
     assert(
+      // overrideing toString() I can use the === to use my custom equal(...) function
       Cell(ListBuffer(givenGuitar), 2) === findCell(givenMatrix, Map(0 -> 1))
     )
 
@@ -132,5 +164,17 @@ class KnapsackSpec extends FunSuite {
       findCell(matrixUpdated, Map(1->2)) === withCell
     )
   }
+
+  test("can add items to a cell") {
+    var withCell = Cell(ListBuffer(), 6)
+    assert(withCell.getUsedWeight() === 0)
+
+    withCell.add(Item("guitar", 1, 1500))
+    assert(withCell.getUsedWeight() === 1)
+
+    withCell.add(Item("stereo", 3, 1500))
+    assert(withCell.getUsedWeight() === 4)
+  }
+  
 
 }
