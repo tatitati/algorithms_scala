@@ -67,8 +67,8 @@ class KnapsackSpec extends FunSuite {
     var matrix = ListBuffer[ListBuffer[Cell]]() // List is immutable!!!!!
     for(item <- items) {
       var row = ListBuffer[Cell]()
-      for(i <- 1 to subBags.size) {
-        val emptyCell = Cell(ListBuffer(), limitWeight = i)
+      for(subbag <- subBags) {
+        val emptyCell = Cell(ListBuffer(), limitWeight = subbag)
         row += emptyCell
       }
 
@@ -86,6 +86,57 @@ class KnapsackSpec extends FunSuite {
     matrix(rowIndex)(columnIndex)
   }
 
+  def findBestSolutionForSubweight(matrix: ListBuffer[ListBuffer[Cell]], subweightColumn: Int ): Cell = {
+    var maxCell = Cell(ListBuffer(), 0)
+
+    for(row <- matrix) {
+      if (row(subweightColumn).getTotalValue() > maxCell.getTotalValue()) {
+        maxCell = row(subweightColumn)
+      }
+    }
+
+    maxCell
+  }
+
+  def updateCell(
+          matrix: ListBuffer[ListBuffer[Cell]],
+          cell: Cell,
+          position: Map[Int, Int])
+      : ListBuffer[ListBuffer[Cell]] = {
+    val rowIndex = position.keys.head
+    val columnIndex = position.values.head
+
+    matrix(rowIndex).update(columnIndex, cell)
+    matrix
+  }
+
+//  def knapsack(): ListBuffer[ListBuffer[Cell]] = {
+//    val items = List(
+//      Item("guitar", weight=1, 1500),
+//      Item("stereo", weight=4, 3000),
+//      Item("laptop", weight=3, 2000)
+//    )
+//    val subweights = List(1,2,3,4)
+//
+//
+//    val matrix = initMatrix(items, subweights)
+//
+//      for(r <- (0 to matrix.size - 1)) {
+//        val item = items(r)
+//        val row = matrix(r)
+//        for(c <- (0 to row.size - 1)) {
+//          val cell = row(c)
+//
+//          if(!cell.itemFits(item) && r != 0) {
+//            var cell = findBestSolutionForSubweight(matrix, c)
+//            updateCell(matrix, cell, Map(r->c))
+//          } else {
+//
+//          }
+//        }
+//      }
+//  }
+
 
 
   test("can init a matrix") {
@@ -94,13 +145,13 @@ class KnapsackSpec extends FunSuite {
     val givenLaptop = Item("laptop", 3, 2000)
     val matrix = initMatrix(
       List(givenGuitar, givenStereo, givenLaptop),
-      List(1,2,3,4)
+      List(10,20,30,40)
     )
 
     assert(matrix === ListBuffer(
-      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),Cell(ListBuffer(), 3),Cell(ListBuffer(), 4)),
-      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),Cell(ListBuffer(), 3),Cell(ListBuffer(), 4)),
-      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),Cell(ListBuffer(), 3),Cell(ListBuffer(), 4))
+      ListBuffer(Cell(ListBuffer(), 10),Cell(ListBuffer(), 20),Cell(ListBuffer(), 30),Cell(ListBuffer(), 40)),
+      ListBuffer(Cell(ListBuffer(), 10),Cell(ListBuffer(), 20),Cell(ListBuffer(), 30),Cell(ListBuffer(), 40)),
+      ListBuffer(Cell(ListBuffer(), 10),Cell(ListBuffer(), 20),Cell(ListBuffer(), 30),Cell(ListBuffer(), 40))
     ))
   }
 
@@ -152,6 +203,37 @@ class KnapsackSpec extends FunSuite {
     val radio = Item("radio", 2, 200)
     findCell(matrix, Map(2 -> 3)).add(radio)
     assert(findCell(matrix, Map(2 -> 3)) === Cell(ListBuffer(radio), 4))
+  }
+
+  test("can find best solution for a sub-bag") {
+    val givenGuitar = Item("guitar", 1, 1500)
+    val givenStereo = Item("stereo", 4, 3000)
+    val givenMatrix = ListBuffer(
+      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(givenGuitar), 2), Cell(ListBuffer(), 3),                         Cell(ListBuffer(), 4)),
+      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),            Cell(ListBuffer(givenGuitar, givenStereo), 3), Cell(ListBuffer(), 4)),
+      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),            Cell(ListBuffer(), 3),                         Cell(ListBuffer(), 4))
+    )
+
+    assert(findBestSolutionForSubweight(givenMatrix, 2) === Cell(ListBuffer(givenGuitar, givenStereo), 3))
+  }
+
+  test("matrix can update a cell") {
+    val givenGuitar = Item("guitar", 1, 1500)
+    val givenStereo = Item("stereo", 4, 3000)
+    val givenMatrix = ListBuffer(
+      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(givenGuitar), 2), Cell(ListBuffer(), 3),                         Cell(ListBuffer(), 4)),
+      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),            Cell(ListBuffer(givenGuitar, givenStereo), 3), Cell(ListBuffer(), 4)),
+      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),            Cell(ListBuffer(), 3),                         Cell(ListBuffer(), 4))
+    )
+
+    assert(
+      Cell(ListBuffer(givenGuitar), 2) === findCell(givenMatrix, Map(0 -> 1))
+    )
+    updateCell(givenMatrix, Cell(ListBuffer(givenStereo),2), Map(0->1))
+    assert(
+      Cell(ListBuffer(givenStereo), 2) === findCell(givenMatrix, Map(0 -> 1))
+    )
+
   }
 
 }
