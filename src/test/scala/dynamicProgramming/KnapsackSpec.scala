@@ -153,4 +153,5 @@ class KnapsackSpec extends FunSuite {
     findCell(matrix, Map(2 -> 3)).add(radio)
     assert(findCell(matrix, Map(2 -> 3)) === Cell(ListBuffer(radio), 4))
   }
+
 }
