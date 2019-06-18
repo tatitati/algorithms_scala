@@ -43,21 +43,13 @@ class KnapsackSpec extends FunSuite {
     }
 
 
-    def getTotalValue(): Int = {
-        totalValue
-    }
+    def getTotalValue(): Int = totalValue
 
-    def getUsedWeight(): Int = {
-        usedWeight
-    }
+    def getUsedWeight(): Int = usedWeight
 
-    private def unusedWeight(): Int = {
-      limitWeight - usedWeight
-    }
+    private def unusedWeight(): Int = limitWeight - usedWeight
 
-    def itemFits(item: Item): Boolean = {
-      unusedWeight() >= item.weight
-    }
+    def itemFits(item: Item): Boolean = unusedWeight() >= item.weight
 
     def add(item: Item): Unit = {
       if(itemFits(item)) {
@@ -94,22 +86,9 @@ class KnapsackSpec extends FunSuite {
     matrix(rowIndex)(columnIndex)
   }
 
-  def updateCell(
-          cell: Cell,
-          matrix: ListBuffer[ListBuffer[Cell]],
-          position: Map[Int, Int]
-      ): ListBuffer[ListBuffer[Cell]] = {
-    val rowIndex = position.keys.head
-    val columnIndex = position.values.head
 
-    val row = matrix(rowIndex)
-    val updatedRow = row.updated(columnIndex, cell)
-    val matrixUpdated = matrix.updated(rowIndex, updatedRow)
-    matrixUpdated
-  }
 
   test("init matrix") {
-
     val givenGuitar = Item("guitar", 1, 1500)
     val givenStereo = Item("stereo", 4, 3000)
     val givenLaptop = Item("laptop", 3, 2000)
@@ -148,22 +127,6 @@ class KnapsackSpec extends FunSuite {
     )
   }
 
-  test("can update an specific cell") {
-    val givenMatrix = ListBuffer(
-      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),Cell(ListBuffer(), 3),Cell(ListBuffer(), 4)),
-      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),Cell(ListBuffer(), 3),Cell(ListBuffer(), 4)),
-      ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),Cell(ListBuffer(), 3),Cell(ListBuffer(), 4))
-    )
-
-    val withGitar = Item("guitar", 1, 1500)
-    val withStereo = Item("stereo", 4, 3000)
-    val withCell = Cell(ListBuffer(withGitar, withStereo), 2)
-    val matrixUpdated = updateCell(withCell, givenMatrix, Map(1->2))
-
-    assert(
-      findCell(matrixUpdated, Map(1->2)) === withCell
-    )
-  }
 
   test("can add items to a cell") {
     var withCell = Cell(ListBuffer(), 6)
@@ -175,6 +138,19 @@ class KnapsackSpec extends FunSuite {
     withCell.add(Item("stereo", 3, 1500))
     assert(withCell.getUsedWeight() === 4)
   }
-  
 
+
+  test("can add items to a cell inside a matrix") {
+    val matrix = initMatrix(
+      List(
+        Item("guitar", 1, 1500),
+        Item("stereo", 4, 3000),
+        Item("laptop", 3, 2000)),
+      List(1,2,3,4)
+    )
+
+    val radio = Item("radio", 2, 200)
+    findCell(matrix, Map(2 -> 3)).add(radio)
+    assert(findCell(matrix, Map(2 -> 3)) === Cell(ListBuffer(radio), 4))
+  }
 }
