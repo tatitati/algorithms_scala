@@ -31,6 +31,9 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Cutting rod
 - [ ] 1/0 Knapsack :fire:
 - [ ] Matrix multiplication
+- [ ] Planning trip
+- [ ] Common substring
+- [ ] Common subsequence
 - [ ] ....
 
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming
