@@ -150,19 +150,23 @@ class KnapsackSpec extends FunSuite {
             matrix = updateCell(matrix, currentBestCell, Map(r->c))
             println(currentBestCell)
 
+            // TAKE THE ONE ABOVE?
           } else if (cell.itemFits(item) && r != 0) {
             var bestRemainingWeight = Cell(ListBuffer(), 0)
             if(cell.getLimitWeight() - item.weight != 0) {
               bestRemainingWeight = findBestForWeight(matrix, cell.getLimitWeight() - item.weight)
             }
 
+            // CALCULATE MAX OF THESE TWO OPTIONS
             var bestCurrentWeight = findBestForWeight(matrix, c)
             if ((bestRemainingWeight.getTotalValue() + item.value) > bestCurrentWeight.getTotalValue()) {
+              // VALUE OF CURRENT ITEM + VALUE OF REMAINING SPACE
               cell.importItemsFromCell(bestRemainingWeight)
               cell.add(item)
               println(cell)
               matrix = updateCell(matrix, cell, Map(r->c))
             } else {
+              // TAKE THE ONE ABOVE
               println(bestCurrentWeight)
               matrix = updateCell(matrix, bestCurrentWeight, Map(r->c))
             }
