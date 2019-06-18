@@ -34,6 +34,8 @@ class KnapsackSpec extends FunSuite {
 
     override def toString(): String = {
       s"""
+         |      Cell
+         |      ====
          |      totalValue: $totalValue
          |      limitWeight: $limitWeight
          |      usedWeight: $usedWeight
@@ -42,12 +44,13 @@ class KnapsackSpec extends FunSuite {
        """.stripMargin
     }
 
-
+    def getItems(): ListBuffer[Item] = items
     def getTotalValue(): Int = totalValue
+    def getLimitWeight(): Int = limitWeight
 
     def getUsedWeight(): Int = usedWeight
 
-    private def unusedWeight(): Int = limitWeight - usedWeight
+    def unusedWeight(): Int = limitWeight - usedWeight
 
     def itemFits(item: Item): Boolean = unusedWeight() >= item.weight
 
@@ -56,6 +59,15 @@ class KnapsackSpec extends FunSuite {
         this.items += item
         this.usedWeight += item.weight
         this.totalValue += item.value
+      } else {
+        throw new Exception("adding item that doesnt fit")
+      }
+    }
+
+    def importItemsFromCell(cell: Cell) = {
+      val items = cell.getItems()
+      for(item <- items) {
+        this.add(item)
       }
     }
   }
@@ -86,7 +98,7 @@ class KnapsackSpec extends FunSuite {
     matrix(rowIndex)(columnIndex)
   }
 
-  def findBestSolutionForSubweight(matrix: ListBuffer[ListBuffer[Cell]], subweightColumn: Int ): Cell = {
+  def findBestForWeight(matrix: ListBuffer[ListBuffer[Cell]], subweightColumn: Int ): Cell = {
     var maxCell = Cell(ListBuffer(), 0)
 
     for(row <- matrix) {
@@ -110,32 +122,54 @@ class KnapsackSpec extends FunSuite {
     matrix
   }
 
-//  def knapsack(): ListBuffer[ListBuffer[Cell]] = {
-//    val items = List(
-//      Item("guitar", weight=1, 1500),
-//      Item("stereo", weight=4, 3000),
-//      Item("laptop", weight=3, 2000)
-//    )
-//    val subweights = List(1,2,3,4)
-//
-//
-//    val matrix = initMatrix(items, subweights)
-//
-//      for(r <- (0 to matrix.size - 1)) {
-//        val item = items(r)
-//        val row = matrix(r)
-//        for(c <- (0 to row.size - 1)) {
-//          val cell = row(c)
-//
-//          if(!cell.itemFits(item) && r != 0) {
-//            var cell = findBestSolutionForSubweight(matrix, c)
-//            updateCell(matrix, cell, Map(r->c))
-//          } else {
-//
-//          }
-//        }
-//      }
-//  }
+  def knapsack(): Unit = {
+    val items = List(
+      Item("guitar", weight=1, 1500),
+      Item("stereo", weight=4, 3000),
+      Item("laptop", weight=3, 2000)
+    )
+    val subweights = List(1,2,3,4)
+
+
+    var matrix = initMatrix(items, subweights)
+
+      for(r <- (0 to matrix.size - 1)) {
+        val item = items(r)
+        val row = matrix(r)
+        for(c <- (0 to row.size - 1)) {
+          println(s"${r} -> ${c}")
+          var cell = row(c)
+
+          if(cell.itemFits(item) && r == 0) {
+            cell.add(item)
+            matrix = updateCell(matrix, cell, Map(r->c))
+            println(cell)
+
+          } else if(!cell.itemFits(item) && r != 0) {
+            var currentBestCell = findBestForWeight(matrix, c) // take the one above
+            matrix = updateCell(matrix, currentBestCell, Map(r->c))
+            println(currentBestCell)
+
+          } else if (cell.itemFits(item) && r != 0) {
+            var bestRemainingWeight = Cell(ListBuffer(), 0)
+            if(cell.getLimitWeight() - item.weight != 0) {
+              bestRemainingWeight = findBestForWeight(matrix, cell.getLimitWeight() - item.weight)
+            }
+
+            var bestCurrentWeight = findBestForWeight(matrix, c)
+            if ((bestRemainingWeight.getTotalValue() + item.value) > bestCurrentWeight.getTotalValue()) {
+              cell.importItemsFromCell(bestRemainingWeight)
+              cell.add(item)
+              println(cell)
+              matrix = updateCell(matrix, cell, Map(r->c))
+            } else {
+              println(bestCurrentWeight)
+              matrix = updateCell(matrix, bestCurrentWeight, Map(r->c))
+            }
+          }
+        }
+      }
+  }
 
 
 
@@ -157,7 +191,7 @@ class KnapsackSpec extends FunSuite {
 
   test("can find an specific cell in the matrix") {
     val givenGuitar = Item("guitar", 1, 1500)
-    val givenStereo = Item("stereo", 4, 3000)
+    val givenStereo = Item("stereo", 2, 3000)
     val givenMatrix = ListBuffer(
       ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(givenGuitar), 2), Cell(ListBuffer(), 3),                         Cell(ListBuffer(), 4)),
       ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),            Cell(ListBuffer(givenGuitar, givenStereo), 3), Cell(ListBuffer(), 4)),
@@ -207,19 +241,19 @@ class KnapsackSpec extends FunSuite {
 
   test("can find best solution for a sub-bag") {
     val givenGuitar = Item("guitar", 1, 1500)
-    val givenStereo = Item("stereo", 4, 3000)
+    val givenStereo = Item("stereo", 2, 3000)
     val givenMatrix = ListBuffer(
       ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(givenGuitar), 2), Cell(ListBuffer(), 3),                         Cell(ListBuffer(), 4)),
       ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),            Cell(ListBuffer(givenGuitar, givenStereo), 3), Cell(ListBuffer(), 4)),
       ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),            Cell(ListBuffer(), 3),                         Cell(ListBuffer(), 4))
     )
 
-    assert(findBestSolutionForSubweight(givenMatrix, 2) === Cell(ListBuffer(givenGuitar, givenStereo), 3))
+    assert(findBestForWeight(givenMatrix, 2) === Cell(ListBuffer(givenGuitar, givenStereo), 3))
   }
 
   test("matrix can update a cell") {
     val givenGuitar = Item("guitar", 1, 1500)
-    val givenStereo = Item("stereo", 4, 3000)
+    val givenStereo = Item("stereo", 2, 3000)
     val givenMatrix = ListBuffer(
       ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(givenGuitar), 2), Cell(ListBuffer(), 3),                         Cell(ListBuffer(), 4)),
       ListBuffer(Cell(ListBuffer(), 1),Cell(ListBuffer(), 2),            Cell(ListBuffer(givenGuitar, givenStereo), 3), Cell(ListBuffer(), 4)),
@@ -235,5 +269,8 @@ class KnapsackSpec extends FunSuite {
     )
 
   }
+
+
+  knapsack()
 
 }
