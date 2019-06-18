@@ -88,7 +88,7 @@ class KnapsackSpec extends FunSuite {
 
 
 
-  test("init matrix") {
+  test("can init a matrix") {
     val givenGuitar = Item("guitar", 1, 1500)
     val givenStereo = Item("stereo", 4, 3000)
     val givenLaptop = Item("laptop", 3, 2000)
@@ -104,7 +104,7 @@ class KnapsackSpec extends FunSuite {
     ))
   }
 
-  test("can extract an specific cell") {
+  test("can find an specific cell in the matrix") {
     val givenGuitar = Item("guitar", 1, 1500)
     val givenStereo = Item("stereo", 4, 3000)
     val givenMatrix = ListBuffer(
@@ -128,7 +128,7 @@ class KnapsackSpec extends FunSuite {
   }
 
 
-  test("can add items to a cell") {
+  test("can add items to an standalone cell") {
     var withCell = Cell(ListBuffer(), 6)
     assert(withCell.getUsedWeight() === 0)
 
@@ -140,7 +140,7 @@ class KnapsackSpec extends FunSuite {
   }
 
 
-  test("can add items to a cell inside a matrix") {
+  test("can add items to a cell that is part of a matrix") {
     val matrix = initMatrix(
       List(
         Item("guitar", 1, 1500),
