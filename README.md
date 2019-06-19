@@ -31,8 +31,8 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Cutting rod
 - [x] ~1/0 Knapsack~
 - [ ] Matrix multiplication
-- [ ] Common substring
-- [ ] Common subsequence
+- [ ] Longest Common substring
+- [ ] Longest Common subsequence
 - [ ] ....
 
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming
