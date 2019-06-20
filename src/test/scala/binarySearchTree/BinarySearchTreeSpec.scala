@@ -93,13 +93,22 @@ class BinarySearchTreeSpec extends FunSuite {
   }
 
   test("can find the minimum") {
-    var tree = buildTree()
+    def min(tree: Node, trace: ArrayBuffer[Int]): ArrayBuffer[Int] = {
+      trace += tree.value
 
-    while(tree.getLeft() != None) {
-      tree = tree.getLeft().get
+      if(tree.getLeft() != None) {
+        min(tree.getLeft().get, trace)
+      }
+
+      trace
     }
 
-    assert(tree.value === 1)
+
+
+    var tree = buildTree()
+    var trace = ArrayBuffer[Int]()
+
+    assert(min(tree, trace) === ArrayBuffer(5, 3, 1))
   }
 
   test("can find the maximum") {
