@@ -90,7 +90,7 @@ class BinarySearchTreeSpec extends FunSuite {
     assert(node4.isBiggerThan(node1) === true)
   }
 
-  def tree(): Node = {
+  def getTree(): Node = {
     // leaves
     val node1 = new Node(None, None, 1)
     val node4 = new Node(None, None, 4)
@@ -103,10 +103,24 @@ class BinarySearchTreeSpec extends FunSuite {
     new Node(Some(node3), Some(node7), 5)
   }
 
-  test("can print whole tree") {
-    val tree = tree()
+  test("can find the minimum") {
+    var tree = getTree()
 
-    
+    while(tree.getLeft() != None) {
+      tree = tree.getLeft().get
+    }
+
+    assert(tree.value === 1)
+  }
+
+  test("can find the maximum") {
+    var tree = getTree()
+
+    while(tree.getRight() != None) {
+      tree = tree.getRight().get
+    }
+
+    assert(tree.value === 9)
   }
 
 }
