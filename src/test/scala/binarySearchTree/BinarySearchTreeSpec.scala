@@ -113,7 +113,6 @@ class BinarySearchTreeSpec extends FunSuite {
       }
     }
 
-
     var tree = buildTree()
     assert(max(tree) === 9)
   }
@@ -122,25 +121,12 @@ class BinarySearchTreeSpec extends FunSuite {
     def search(tree: Node, n: Int, trace: ArrayBuffer[Int]): ArrayBuffer[Int] = {
       trace += tree.value
 
-      if (n < tree.value) {
-        if(tree.getLeft() == None) {
-          throw new Exception("Trying to found a number that doesnt exist in the tree")
-        }
-
-        search(tree.getLeft().get, n, trace)
+      tree match {
+        case t if (n < t.value) => search(tree.getLeft().get, n, trace)
+        case t if (n > t.value) => search(tree.getRight().get, n, trace)
+        case _ => trace
       }
-
-      if (n > tree.value) {
-        if(tree.getRight() == None) {
-          throw new Exception("Trying to found a number that doesnt exist in the tree")
-        }
-
-        search(tree.getRight().get, n, trace)
-      }
-
-      trace
     }
-
 
     var tree = buildTree()
     val n = 6
