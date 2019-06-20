@@ -93,40 +93,29 @@ class BinarySearchTreeSpec extends FunSuite {
   }
 
   test("can find the minimum") {
-    def min(tree: Node, trace: ArrayBuffer[Int]): ArrayBuffer[Int] = {
-      trace += tree.value
+    def min(tree: Node): Int = {
+      tree.getLeft() match {
+        case None => tree.value
+        case _ => min(tree.getLeft().get)
 
-      if(tree.getLeft() != None) {
-        min(tree.getLeft().get, trace)
       }
-
-      trace
     }
 
-
-
     var tree = buildTree()
-    var trace = ArrayBuffer[Int]()
-
-    assert(min(tree, trace) === ArrayBuffer(5, 3, 1))
+    assert(min(tree) === 1)
   }
 
   test("can find the maximum") {
-    def max(tree: Node, trace: ArrayBuffer[Int]): ArrayBuffer[Int] = {
-
-      trace += tree.value
-      if(tree.getRight() != None) {
-        max(tree.getRight().get, trace)
+    def max(tree: Node): Int = {
+      tree.getRight() match {
+        case None => tree.value
+        case _ => max(tree.getRight().get)
       }
-
-      trace
     }
 
 
     var tree = buildTree()
-    var trace = ArrayBuffer[Int]()
-
-    assert(max(tree, trace) === ArrayBuffer(5, 7, 9))
+    assert(max(tree) === 9)
   }
 
   test("can search") {
