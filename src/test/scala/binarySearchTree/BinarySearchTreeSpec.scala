@@ -2,6 +2,8 @@ package binarySearchTree
 
 import org.scalatest.FunSuite
 
+import scala.collection.mutable.ArrayBuffer
+
 class BinarySearchTreeSpec extends FunSuite {
 
   class Node {
@@ -67,30 +69,17 @@ class BinarySearchTreeSpec extends FunSuite {
     }
   }
 
-  test("Can add child to a parent node") {
+  test("Can compare, get left, and get parent") {
     val node1 = new Node(None, None, 1)
     val node4 = new Node(None, None, 4)
     val node3 = new Node(Some(node1), Some(node4), 3)
 
     assert(node1.getParent() === Some(node3))
-  }
-
-  test("Can access to left or right childs") {
-    val node1 = new Node(None, None, 1)
-    val node4 = new Node(None, None, 4)
-    val node3 = new Node(Some(node1), Some(node4), 3)
-
     assert(node3.getLeft() === Some(node1))
-  }
-
-  test("can compare two nodes") {
-    val node1 = new Node(None, None, 1)
-    val node4 = new Node(None, None, 4)
-
     assert(node4.isBiggerThan(node1) === true)
   }
 
-  def getTree(): Node = {
+  def buildTree(): Node = {
     // leaves
     val node1 = new Node(None, None, 1)
     val node4 = new Node(None, None, 4)
@@ -104,7 +93,7 @@ class BinarySearchTreeSpec extends FunSuite {
   }
 
   test("can find the minimum") {
-    var tree = getTree()
+    var tree = buildTree()
 
     while(tree.getLeft() != None) {
       tree = tree.getLeft().get
@@ -114,13 +103,43 @@ class BinarySearchTreeSpec extends FunSuite {
   }
 
   test("can find the maximum") {
-    var tree = getTree()
+    var tree = buildTree()
 
     while(tree.getRight() != None) {
       tree = tree.getRight().get
     }
 
     assert(tree.value === 9)
+  }
+
+  test("can search") {
+    def search(tree: Node, n: Int, trace: ArrayBuffer[Int]): ArrayBuffer[Int] = {
+      trace += tree.value
+
+      if (n < tree.value) {
+        if(tree.getLeft() == None) {
+          throw new Exception("Trying to found a number that doesnt exist in the tree")
+        }
+
+        return search(tree.getLeft().get, n, trace)
+      }
+
+      if (n > tree.value) {
+        if(tree.getRight() == None) {
+          throw new Exception("Trying to found a number that doesnt exist in the tree")
+        }
+
+        return search(tree.getRight().get, n, trace)
+      }
+
+      return trace
+    }
+
+
+    var tree = buildTree()
+    val n = 6
+    var trace = ArrayBuffer[Int]()
+    assert(search(tree, n, trace) === ArrayBuffer(5, 7, 6))
   }
 
 }
