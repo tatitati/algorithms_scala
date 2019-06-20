@@ -65,14 +65,12 @@ class BinarySearchTreeSpec extends FunSuite {
     }
   }
 
-  test("I can create a tree") {
+  test("Can add child to a parent node") {
     val node1 = new Node(None, None, 1, None)
     val node4 = new Node(None, None, 4, None)
     val node3 = new Node(Some(node1), Some(node4), 3, None)
 
     assert(node1.getParent() === Some(node3))
-
-
   }
 
 }
