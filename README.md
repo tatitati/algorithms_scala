@@ -6,8 +6,6 @@
 
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursion
 
-## Trees
-
 ## Bactracking
 
 - [x] ~Laberinth resolver~
@@ -41,11 +39,11 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 - [ ] K-means
 
-## Search
+## Trees
 
 - [x] ~Binary search~
 
-https://github.com/tatitati/algorithms/tree/master/Search
+https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/binarySearchTree
 
 ## Sort
 
