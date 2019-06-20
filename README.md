@@ -29,11 +29,10 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [x] ~Fibonnaci Top-Down~
 - [ ] Change coins
 - [ ] Cutting rod
-- [ ] 1/0 Knapsack :fire:
+- [x] ~1/0 Knapsack~
 - [ ] Matrix multiplication
-- [ ] Planning trip
-- [ ] Common substring
-- [ ] Common subsequence
+- [ ] Longest Common substring
+- [ ] Longest Common subsequence
 - [ ] ....
 
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming
