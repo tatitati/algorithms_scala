@@ -6,11 +6,29 @@ import scala.collection.mutable.ArrayBuffer
 
 case class Node(
     val msg: String,
-    val priority: Int,
-    private var next: Option[Node] = None
+    val priority: Int
 ) {
-  def setNext(node: Option[Node]): Unit = next = node
+  private var next: Option[Node] = None
+  private var previous: Option[Node] = None
+
+  def setNext(nextNode: Option[Node]): Unit = {
+    if(nextNode != None) {
+      nextNode.get.setPrevious(Some(this))
+    }
+    
+    next = nextNode
+  }
+
+  def setPrevious(previousNode: Option[Node]): Unit = {
+    if(previousNode != None) {
+      previousNode.get.setNext(Some(this))
+    }
+
+    previous = previousNode
+  }
+
   def getNext(): Option[Node] = next
+  def getPrevious(): Option[Node] = previous
 }
 
 class PriorityQueueSpec extends FunSuite {
@@ -27,22 +45,13 @@ class PriorityQueueSpec extends FunSuite {
 
     }
 
-    val nodeC = Node("C", 7)
-    val nodeB = Node("B", 6, Some(nodeC))
-    val nodeA = Node("A", 5, Some(nodeB))
+//    val nodeC = Node("C", 7)
+    val nodeB = Node("B", 6)
+    val nodeA = Node("A", 5).setNext(Some(nodeB))
+    println(nodeA)
 
-    assert(traverse(Some(nodeA), ArrayBuffer()) === ArrayBuffer("A", "B", "C"))
+//    assert(traverse(Some(nodeA), ArrayBuffer()) === ArrayBuffer("A", "B", "C"))
   }
 
-//  test("higher priority are placed at the start of the queue") {
-//    def insert(list: Node, node: Node): Node = {
-//
-//    }
-//
-//    val nodeC = Node("C", 7)
-//    val nodeB = Node("B", 6)
-//    val nodeA = Node("A", 5)
-//
-//
-//  }
+
 }
