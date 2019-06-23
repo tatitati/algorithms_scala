@@ -35,6 +35,11 @@ class BinarySearchTreeSpec extends FunSuite {
       right = rightNode
     }
 
+    override def toString(): String = {
+      s"""
+          node: ${value}
+       """.stripMargin
+    }
     def getLeft(): Option[Node] = left
     def getRight(): Option[Node] = right
     def getParent(): Option[Node] = parent
@@ -134,9 +139,26 @@ class BinarySearchTreeSpec extends FunSuite {
   }
 
   test("can inorder traversal") {
-      def inorderTraversal(tree: Node) = {
+      def inorderTraversal(tree: Node, result: ArrayBuffer[Int]): ArrayBuffer[Int] = {
+        // left
+        if(tree.getLeft() != None) {
+          inorderTraversal(tree.getLeft().get, result)
+        }
 
+        // parent
+        result += tree.value
+
+        // right
+        if(tree.getRight() != None) {
+          inorderTraversal(tree.getRight().get, result)
+        }
+
+        result
       }
+
+      val result = inorderTraversal(buildTree(), new ArrayBuffer())
+
+      assert(result === ArrayBuffer(1,3,4,5,6,7,9))
   }
 
 }
