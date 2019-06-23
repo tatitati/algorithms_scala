@@ -4,31 +4,29 @@ import org.scalatest.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
 
-case class Node(
-    val msg: String,
-    val priority: Int
+class Node(
+    val msg: String = "",
+    val priority: Int = 0
 ) {
   private var next: Option[Node] = None
-  private var previous: Option[Node] = None
 
-  def setNext(nextNode: Option[Node]): Unit = {
-    if(nextNode != None) {
-      nextNode.get.setPrevious(Some(this))
-    }
-    
-    next = nextNode
+  override def toString(): String = {
+    s"""
+       |
+       |priority: $priority
+       |msg: $msg
+       |next:
+       |  $next
+       |
+     """.stripMargin
   }
 
-  def setPrevious(previousNode: Option[Node]): Unit = {
-    if(previousNode != None) {
-      previousNode.get.setNext(Some(this))
-    }
-
-    previous = previousNode
+  def setNext(nextNode: Option[Node]): Node = {
+    next = nextNode
+    this
   }
 
   def getNext(): Option[Node] = next
-  def getPrevious(): Option[Node] = previous
 }
 
 class PriorityQueueSpec extends FunSuite {
@@ -45,13 +43,49 @@ class PriorityQueueSpec extends FunSuite {
 
     }
 
-//    val nodeC = Node("C", 7)
-    val nodeB = Node("B", 6)
-    val nodeA = Node("A", 5).setNext(Some(nodeB))
-    println(nodeA)
+    val nodeC = new Node("C", 0)
+    val nodeB = new Node("B", 2).setNext(Some(nodeC))
+    val nodeA = new Node("A", 100).setNext(Some(nodeB))
 
-//    assert(traverse(Some(nodeA), ArrayBuffer()) === ArrayBuffer("A", "B", "C"))
+    assert(traverse(Some(nodeA), ArrayBuffer()) === ArrayBuffer("A", "B", "C"))
   }
 
+  test("can place new node in proper place") {
+    def addNode(currentNode: Node, newNode: Node): Node = {
+      if(currentNode.priority > newNode.priority){
+        currentNode.getNext() match {
+          case Some(nextNode) => addNode(nextNode, newNode)
+          case None => {
+            currentNode.setNext(Some(newNode))
+          }
+        }
+        currentNode
+      } else {
+        newNode.setNext(Some(currentNode))
+        newNode
+      }
+    }
 
+    def traverse(node: Option[Node], msgs: ArrayBuffer[String]): ArrayBuffer[String] = {
+      node match {
+        case Some(node) => {
+          msgs += node.msg
+          traverse(node.getNext(), msgs)
+        }
+        case _ => msgs
+      }
+
+    }
+
+    val nodeD = new Node("D10", 10)
+    val nodeC = new Node("C3", 3)
+    val nodeB = new Node("B8", 8)
+    val nodeA = new Node("A5", 5)
+
+    var result1 = addNode(nodeA, nodeB)
+    var result2 = addNode(result1, nodeC)
+    var result3 = addNode(result2, nodeD)
+
+    assert(traverse(Some(result3), ArrayBuffer()) === ArrayBuffer("D10", "B8", "A5", "C3"))
+  }
 }
