@@ -1,7 +1,6 @@
 package binarySearchTree
 
 import org.scalatest.FunSuite
-
 import scala.collection.mutable.ArrayBuffer
 
 class BinarySearchTreeSpec extends FunSuite {
@@ -69,16 +68,6 @@ class BinarySearchTreeSpec extends FunSuite {
     }
   }
 
-  test("Can compare, get left, and get parent") {
-    val node1 = new Node(None, None, 1)
-    val node4 = new Node(None, None, 4)
-    val node3 = new Node(Some(node1), Some(node4), 3)
-
-    assert(node1.getParent() === Some(node3))
-    assert(node3.getLeft() === Some(node1))
-    assert(node4.isBiggerThan(node1) === true)
-  }
-
   def buildTree(): Node = {
     // leaves
     val node1 = new Node(None, None, 1)
@@ -90,6 +79,16 @@ class BinarySearchTreeSpec extends FunSuite {
     val node7 = new Node(Some(node6), Some(node9), 7)
     // root
     new Node(Some(node3), Some(node7), 5)
+  }
+
+  test("Can compare, get left, and get parent") {
+    val node1 = new Node(None, None, 1)
+    val node4 = new Node(None, None, 4)
+    val node3 = new Node(Some(node1), Some(node4), 3)
+
+    assert(node1.getParent() === Some(node3))
+    assert(node3.getLeft() === Some(node1))
+    assert(node4.isBiggerThan(node1) === true)
   }
 
   test("can find the minimum") {
@@ -134,8 +133,10 @@ class BinarySearchTreeSpec extends FunSuite {
     assert(search(tree, n, trace) === ArrayBuffer(5, 7, 6))
   }
 
-  test("can traverse") {
+  test("can inorder traversal") {
+      def inorderTraversal(tree: Node) = {
 
+      }
   }
 
 }
