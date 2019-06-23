@@ -1,6 +1,7 @@
 import Dependencies._
+import sbt.Keys.libraryDependencies
 
-ThisBuild / scalaVersion     := "2.12.8"
+ThisBuild / scalaVersion     := "2.11.8"
 ThisBuild / version          := "0.1.0-SNAPSHOT"
 ThisBuild / organization     := "com.example"
 ThisBuild / organizationName := "example"
@@ -8,7 +9,11 @@ ThisBuild / organizationName := "example"
 lazy val root = (project in file("."))
   .settings(
     name := "algorithms_scala",
-    libraryDependencies += scalaTest % Test
+    libraryDependencies += scalaTest % Test,
+    libraryDependencies += "org.apache.spark" %% "spark-core" % "2.0.0",
+    libraryDependencies += "org.apache.spark" %% "spark-sql" % "2.0.0",
+    libraryDependencies += "org.apache.spark" %% "spark-mllib" % "2.0.0",
+    libraryDependencies += "org.apache.spark" %% "spark-streaming" % "2.0.0"
   )
 
 // Uncomment the following for publishing to Sonatype.
