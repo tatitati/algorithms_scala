@@ -89,6 +89,23 @@ class Node {
     }
   }
 
+  def inOrderTraversal(result: ArrayBuffer[Int]): ArrayBuffer[Int] = {
+    // left
+    if(this.getLeft() != None) {
+      this.getLeft().get.inOrderTraversal(result)
+    }
+
+    // parent
+    result += this.value
+
+    // right
+    if(this.getRight() != None) {
+      this.getRight().get.inOrderTraversal(result)
+    }
+
+    result
+  }
+
   private def setParent(node: Option[Node]): Node = {
     parent = node
     this
@@ -134,28 +151,13 @@ class BinarySearchTreeSpec extends FunSuite {
     var tree = buildTree()
     val n = 6
     var trace = ArrayBuffer[Int]()
+
     assert(tree.search(n, trace) === ArrayBuffer(5, 7, 6))
   }
 
   test("can inorder traversal") {
-      def inorderTraversal(tree: Node, result: ArrayBuffer[Int]): ArrayBuffer[Int] = {
-        // left
-        if(tree.getLeft() != None) {
-          inorderTraversal(tree.getLeft().get, result)
-        }
-
-        // parent
-        result += tree.value
-
-        // right
-        if(tree.getRight() != None) {
-          inorderTraversal(tree.getRight().get, result)
-        }
-
-        result
-      }
-
-      val result = inorderTraversal(buildTree(), new ArrayBuffer())
+      val tree = buildTree()
+      val result = tree.inOrderTraversal(new ArrayBuffer())
 
       assert(result === ArrayBuffer(1,3,4,5,6,7,9))
   }
