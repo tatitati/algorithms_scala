@@ -41,7 +41,7 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 ## Machine learning
 
-- [ ] Decission Trees
+- [ ] Decission Trees :fire:
 - [ ] Random Forest
 - [ ] Linear Regression
 - [ ] Bayes
