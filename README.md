@@ -66,8 +66,8 @@ https://github.com/tatitati/algorithms/tree/master/Sort
 
 # Data structures
 
-- [ ] Binary Tree
+- [x] ~Binary Tree~
 - [ ] Black-Red Tree
 - [ ] Heap Tree
-- [ ] Priority Queue
+- [ ] Priority Queue :fire:
  ...
