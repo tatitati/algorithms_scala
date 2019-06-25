@@ -1,7 +1,6 @@
 package queue
 
 import org.scalatest.FunSuite
-
 import scala.collection.mutable.ArrayBuffer
 
 class Node(
@@ -27,27 +26,25 @@ class Node(
   }
 
   def getNext(): Option[Node] = next
+
+  def traverse(msgs: ArrayBuffer[String]): ArrayBuffer[String] = {
+    msgs += this.msg
+
+    this.getNext() match {
+      case Some(node) => node.traverse(msgs)
+      case None => msgs
+    }
+  }
 }
 
 class PriorityQueueSpec extends FunSuite {
 
   test("I can traverse across multiple nodes") {
-    def traverse(node: Option[Node], msgs: ArrayBuffer[String]): ArrayBuffer[String] = {
-      node match {
-        case Some(node) => {
-          msgs += node.msg
-          traverse(node.getNext(), msgs)
-        }
-        case _ => msgs
-      }
-
-    }
-
     val nodeC = new Node("C", 0)
     val nodeB = new Node("B", 2).setNext(Some(nodeC))
     val nodeA = new Node("A", 100).setNext(Some(nodeB))
 
-    assert(traverse(Some(nodeA), ArrayBuffer()) === ArrayBuffer("A", "B", "C"))
+    assert(nodeA.traverse(ArrayBuffer()) === ArrayBuffer("A", "B", "C"))
   }
 
   test("can place new node in proper place") {
