@@ -69,5 +69,5 @@ https://github.com/tatitati/algorithms/tree/master/Sort
 - [x] ~Binary Tree~
 - [ ] Black-Red Tree
 - [ ] Heap Tree
-- [x] ~Priority Queue~
+- [x] ~Priority Queue (unidirectional)~
  ...
