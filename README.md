@@ -39,11 +39,12 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 - [ ] K-means
 
-## Trees
+## Machine learning
 
-- [x] ~Binary search~
-
-https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/binarySearchTree
+- [ ] Decission Trees :fire:
+- [ ] Random Forest
+- [ ] Linear Regression
+- [ ] Bayes
 
 ## Sort
 
@@ -59,8 +60,8 @@ https://github.com/tatitati/algorithms/tree/master/Sort
 
 # Data structures
 
-- [ ] Binary Tree
+- [x] ~Binary search tree~
 - [ ] Black-Red Tree
 - [ ] Heap Tree
-- [ ] Priority Queue
+- [x] ~Priority Queue (unidirectional)~
  ...
