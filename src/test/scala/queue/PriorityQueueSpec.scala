@@ -63,17 +63,6 @@ class PriorityQueueSpec extends FunSuite {
       }
     }
 
-    def traverse(node: Option[Node], msgs: ArrayBuffer[String]): ArrayBuffer[String] = {
-      node match {
-        case Some(node) => {
-          msgs += node.msg
-          traverse(node.getNext(), msgs)
-        }
-        case _ => msgs
-      }
-
-    }
-
     val nodeD = new Node("D10", 10)
     val nodeC = new Node("C3", 3)
     val nodeB = new Node("B8", 8)
@@ -83,6 +72,6 @@ class PriorityQueueSpec extends FunSuite {
     var result2 = addNode(result1, nodeC)
     var result3 = addNode(result2, nodeD)
 
-    assert(traverse(Some(result3), ArrayBuffer()) === ArrayBuffer("D10", "B8", "A5", "C3"))
+    assert(result3.traverse(ArrayBuffer()) === ArrayBuffer("D10", "B8", "A5", "C3"))
   }
 }
