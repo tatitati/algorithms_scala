@@ -79,6 +79,16 @@ class Node {
     }
   }
 
+  def search(n: Int, trace: ArrayBuffer[Int]): ArrayBuffer[Int] = {
+    trace += this.value
+
+    this match {
+      case t if (n < t.value) => t.getLeft().get.search(n, trace)
+      case t if (n > t.value) => t.getRight().get.search(n, trace)
+      case _ => trace
+    }
+  }
+
   private def setParent(node: Option[Node]): Node = {
     parent = node
     this
@@ -121,20 +131,10 @@ class BinarySearchTreeSpec extends FunSuite {
   }
 
   test("can search") {
-    def search(tree: Node, n: Int, trace: ArrayBuffer[Int]): ArrayBuffer[Int] = {
-      trace += tree.value
-
-      tree match {
-        case t if (n < t.value) => search(tree.getLeft().get, n, trace)
-        case t if (n > t.value) => search(tree.getRight().get, n, trace)
-        case _ => trace
-      }
-    }
-
     var tree = buildTree()
     val n = 6
     var trace = ArrayBuffer[Int]()
-    assert(search(tree, n, trace) === ArrayBuffer(5, 7, 6))
+    assert(tree.search(n, trace) === ArrayBuffer(5, 7, 6))
   }
 
   test("can inorder traversal") {
