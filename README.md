@@ -46,12 +46,6 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 - [ ] Linear Regression
 - [ ] Bayes
 
-## Trees
-
-- [x] ~Binary search~
-
-https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/binarySearchTree
-
 ## Sort
 
 - [x] ~Bubble sort~
