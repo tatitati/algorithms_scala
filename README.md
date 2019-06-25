@@ -39,13 +39,12 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 - [ ] K-means
 
-## Decission Trees
+## Machine learning
 
-## Random Forest
-
-## Linear Regression
-
-## Bayes
+- [ ] Decission Trees
+- [ ] Random Forest
+- [ ] Linear Regression
+- [ ] Bayes
 
 ## Trees
 
