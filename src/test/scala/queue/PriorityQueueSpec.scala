@@ -35,6 +35,19 @@ class Node(
       case None => msgs
     }
   }
+
+  def addNode(newNode: Node): Node = {
+    if(this.priority > newNode.priority){
+      this.getNext() match {
+        case Some(nextNode) => nextNode.addNode(newNode)
+        case None => this.setNext(Some(newNode))
+      }
+      this
+    } else {
+      newNode.setNext(Some(this))
+      newNode
+    }
+  }
 }
 
 class PriorityQueueSpec extends FunSuite {
@@ -48,29 +61,14 @@ class PriorityQueueSpec extends FunSuite {
   }
 
   test("can place new node in proper place") {
-    def addNode(currentNode: Node, newNode: Node): Node = {
-      if(currentNode.priority > newNode.priority){
-        currentNode.getNext() match {
-          case Some(nextNode) => addNode(nextNode, newNode)
-          case None => {
-            currentNode.setNext(Some(newNode))
-          }
-        }
-        currentNode
-      } else {
-        newNode.setNext(Some(currentNode))
-        newNode
-      }
-    }
-
     val nodeD = new Node("D10", 10)
     val nodeC = new Node("C3", 3)
     val nodeB = new Node("B8", 8)
     val nodeA = new Node("A5", 5)
 
-    var result1 = addNode(nodeA, nodeB)
-    var result2 = addNode(result1, nodeC)
-    var result3 = addNode(result2, nodeD)
+    var result1 = nodeA.addNode(nodeB)
+    var result2 = result1.addNode(nodeC)
+    var result3 = result2.addNode(nodeD)
 
     assert(result3.traverse(ArrayBuffer()) === ArrayBuffer("D10", "B8", "A5", "C3"))
   }
