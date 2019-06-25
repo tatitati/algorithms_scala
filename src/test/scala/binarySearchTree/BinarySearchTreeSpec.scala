@@ -3,75 +3,89 @@ package binarySearchTree
 import org.scalatest.FunSuite
 import scala.collection.mutable.ArrayBuffer
 
-class BinarySearchTreeSpec extends FunSuite {
+class Node {
+  private var left: Option[Node] = None
+  private var right: Option[Node] = None
+  var value: Int = -1
+  private var parent: Option[Node] = None
 
-  class Node {
-    private var left: Option[Node] = None
-    private var right: Option[Node] = None
-    var value: Int = -1
-    private var parent: Option[Node] = None
-
-    def this(
+  def this(
             leftNode: Option[Node],
             rightNode: Option[Node],
             valueNode: Int
-            ) {
+          ) {
 
-      this()
+    this()
 
-      value = valueNode
+    value = valueNode
 
-      leftNode match {
-        case Some(node) => node.setParent(Some(this))
-        case _ =>
-      }
-
-      rightNode match {
-        case Some(node) => node.setParent(Some(this))
-        case _ =>
-      }
-
-      left = leftNode
-      right = rightNode
+    leftNode match {
+      case Some(node) => node.setParent(Some(this))
+      case _ =>
     }
 
-    override def toString(): String = {
-      s"""
+    rightNode match {
+      case Some(node) => node.setParent(Some(this))
+      case _ =>
+    }
+
+    left = leftNode
+    right = rightNode
+  }
+
+  override def toString(): String = {
+    s"""
           node: ${value}
        """.stripMargin
-    }
-    def getLeft(): Option[Node] = left
-    def getRight(): Option[Node] = right
-    def getParent(): Option[Node] = parent
+  }
+  def getLeft(): Option[Node] = left
+  def getRight(): Option[Node] = right
+  def getParent(): Option[Node] = parent
 
-    def isBiggerThan(node: Node): Boolean = {
-      this.value > node.value
-    }
+  def isBiggerThan(node: Node): Boolean = {
+    this.value > node.value
+  }
 
-    def setLeft(leftNode: Option[Node]): Node = {
-      leftNode match {
-        case Some(node) => node.setParent(Some(this))
-        case None =>
-      }
-
-      left = leftNode
-      this
+  def setLeft(leftNode: Option[Node]): Node = {
+    leftNode match {
+      case Some(node) => node.setParent(Some(this))
+      case None =>
     }
 
-    def setRight(rightNode: Option[Node]): Node = {
-      rightNode match {
-        case Some(node) => node.setParent(Some(this))
-        case None =>
-      }
-      right = rightNode
-      this
-    }
+    left = leftNode
+    this
+  }
 
-    def setParent(node: Option[Node]): Node = {
-      parent = node
-      this
+  def setRight(rightNode: Option[Node]): Node = {
+    rightNode match {
+      case Some(node) => node.setParent(Some(this))
+      case None =>
+    }
+    right = rightNode
+    this
+  }
+
+  def findMin(): Int = {
+    this.getLeft() match {
+      case Some(node) => node.getLeft().get.findMin()
+      case None => this.value
     }
   }
+
+  def findMax(): Int = {
+    this.getRight() match {
+      case Some(node) => node.getRight().get.findMax()
+      case None => this.value
+    }
+  }
+
+  private def setParent(node: Option[Node]): Node = {
+    parent = node
+    this
+  }
+}
+
+class BinarySearchTreeSpec extends FunSuite {
 
   def buildTree(): Node = {
     // leaves
@@ -97,28 +111,13 @@ class BinarySearchTreeSpec extends FunSuite {
   }
 
   test("can find the minimum") {
-    def min(tree: Node): Int = {
-      tree.getLeft() match {
-        case None => tree.value
-        case _ => min(tree.getLeft().get)
-
-      }
-    }
-
     var tree = buildTree()
-    assert(min(tree) === 1)
+    assert(tree.findMin() === 1)
   }
 
   test("can find the maximum") {
-    def max(tree: Node): Int = {
-      tree.getRight() match {
-        case None => tree.value
-        case _ => max(tree.getRight().get)
-      }
-    }
-
     var tree = buildTree()
-    assert(max(tree) === 9)
+    assert(tree.findMax() === 9)
   }
 
   test("can search") {
