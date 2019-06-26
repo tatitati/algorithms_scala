@@ -17,7 +17,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 ## Graphs
 
 - [ ] Dijkstra (need queue + linked lists)
-- [ ] Breath first
+- [ ] Breath first :fire:
 - [ ] Depth first
 - [ ] Bellman Ford
 
@@ -43,7 +43,7 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 - [ ] Decission Trees :fire:
 - [ ] Random Forest
-- [ ] Linear Regression
+- [ ] Linear Regression :fire:
 - [ ] Bayes
 
 ## Sort
