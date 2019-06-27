@@ -18,6 +18,12 @@ class Queue[A]() {
     q
   }
 
+  def isEmpty(): Boolean = {
+    q.size match {
+      case 0 => true
+      case _ => false
+    }
+  }
 }
 
 class QueueSpec extends FunSuite {
@@ -35,6 +41,15 @@ class QueueSpec extends FunSuite {
     val item = q.dque()
     assert(item === 3)
     assert(q.show() === ArrayBuffer(5, 8))
+  }
 
+  test("can check if is empty") {
+
+    val q = new Queue[Int]()
+
+    q.nque(3)
+    assert(q.isEmpty() === false)
+    q.dque()
+    assert(q.isEmpty() === true)
   }
 }
