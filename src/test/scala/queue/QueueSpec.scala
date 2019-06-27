@@ -11,9 +11,7 @@ class Queue[A]() {
   }
 
   def dque(): A = {
-    val result = q(0)
     q.remove(0)
-    result
   }
 
   def show(): ArrayBuffer[A] = {

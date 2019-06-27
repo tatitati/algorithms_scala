@@ -12,11 +12,7 @@ class Stack[A]() {
   }
 
   def pop(): A = {
-    val result = q.last
     q.remove(q.size-1)
-
-    result
-
   }
 
   def show(): ArrayBuffer[A] = {
