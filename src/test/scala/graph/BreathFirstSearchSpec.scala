@@ -30,7 +30,7 @@ class Queue[A]() {
 
 class BreathFirstSearchSpec extends FunSuite {
 
-  def bfs_traversal(graph: Map[String, List[String]]) = {
+  def bfs_traversal(graph: ListMap[String, List[String]]) = {
     val queue = new Queue[String]()
     var journey: ArrayBuffer[String] = ArrayBuffer()
 

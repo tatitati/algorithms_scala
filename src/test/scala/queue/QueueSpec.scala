@@ -19,10 +19,7 @@ class Queue[A]() {
   }
 
   def isEmpty(): Boolean = {
-    q.size match {
-      case 0 => true
-      case _ => false
-    }
+    q.isEmpty
   }
 }
 

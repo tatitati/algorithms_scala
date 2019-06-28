@@ -18,6 +18,10 @@ class Stack[A]() {
   def show(): ArrayBuffer[A] = {
     q
   }
+
+  def isEmpty(): Boolean = {
+    q.isEmpty
+  }
 }
 
 
