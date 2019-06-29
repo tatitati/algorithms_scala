@@ -38,18 +38,16 @@ class DepthFirstSearchSpec extends FunSuite {
     // set start
     val (start, neighboors) = graph.head
     stack.push(start)
-    stack.push(neighboors)
-    journey += start
 
     while(!stack.isEmpty()) {
-        val neighboors = graph.get(stack.pop()).get
-
-        for(n <- neighboors if !journey.contains(n)){
+        val node = stack.pop()
+        journey += node
+        val neighboors = graph.get(node).get
+        for(n <- neighboors if(!journey.contains(n))) {
           stack.push(n)
-          journey += n
         }
     }
-    
+
     journey
   }
 
@@ -68,7 +66,7 @@ class DepthFirstSearchSpec extends FunSuite {
     )
 
     assert(
-      dfs_traversal(graph) === ArrayBuffer("A", "B", "F", "H", "C", "D", "G", "I", "E")
+      dfs_traversal(graph) === ArrayBuffer("A", "E", "D", "G", "I", "C", "B", "F", "H")
     )
   }
 }
