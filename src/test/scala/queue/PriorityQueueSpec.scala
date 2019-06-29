@@ -53,12 +53,16 @@ class PriorityQueueSpec extends FunSuite {
     val nodeC3 = new Node("C3", 3)
     val nodeB8 = new Node("B8", 8)
     val nodeA5 = new Node("A5", 5)
+    val nodeF7 = new Node("F7", 7)
+    val nodeE6 = new Node("E6", 6)
 
     val queue = nodeA5
       .addNode(nodeB8)
       .addNode(nodeC3)
       .addNode(nodeD10)
+      .addNode(nodeF7)
+      .addNode(nodeE6)
 
-    assert(queue.traverse(ArrayBuffer()) === ArrayBuffer("D10", "B8", "A5", "C3"))
+    assert(queue.traverse(ArrayBuffer()) === ArrayBuffer("D10", "B8", "F7", "E6", "A5", "C3"))
   }
 }
