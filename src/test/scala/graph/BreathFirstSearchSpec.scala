@@ -1,38 +1,16 @@
 package graph
 
 import org.scalatest.FunSuite
+import queue.Queue
+
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
-class Queue[A]() {
-  var q: ArrayBuffer[A] = ArrayBuffer()
-
-  def nque(item: A) = {
-    q += item
-  }
-
-  def dque(): A = {
-    q.remove(0)
-  }
-
-  def show(): ArrayBuffer[A] = {
-    q
-  }
-
-  def isEmpty(): Boolean = {
-    q.size match {
-      case 0 => true
-      case _ => false
-    }
-  }
-
-}
-
 class BreathFirstSearchSpec extends FunSuite {
 
-  def bfs_traversal(graph: ListMap[String, List[String]]) = {
-    val queue = new Queue[String]()
-    var journey: ArrayBuffer[String] = ArrayBuffer()
+  def bfs_traversal[A](graph: ListMap[A, List[A]]) = {
+    val queue = new Queue[A]()
+    var journey: ArrayBuffer[A] = ArrayBuffer()
 
     // set start
     val (start, _) = graph.head
@@ -52,7 +30,7 @@ class BreathFirstSearchSpec extends FunSuite {
     journey
   }
 
-  test("BFS") {
+  test("BFS 1") {
     val graph = ListMap(  // NOTE: Map doesnt keep the order when iterating!!!!!!!
       "A" -> List("B", "C", "D", "E"),
       "B" -> List("A", "F"),
@@ -68,6 +46,21 @@ class BreathFirstSearchSpec extends FunSuite {
     assert(
       bfs_traversal(graph) === ArrayBuffer("A", "B", "C", "D", "E", "F", "G", "H", "I")
     )
+  }
 
+  test("BFS 2") {
+    val graphDirected = ListMap( // NOTE: Map doesnt keep the order when iterating!!!!!!!
+      1 -> List(2, 3),
+      2 -> List(4, 5),
+      3 -> List(5),
+      4 -> List(6),
+      5 -> List(6),
+      6 -> List(7),
+      7 -> List()
+    )
+
+    assert(
+      bfs_traversal(graphDirected) === ArrayBuffer(1,2,3,4,5,6,7)
+    )
   }
 }

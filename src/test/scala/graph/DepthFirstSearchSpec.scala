@@ -1,33 +1,9 @@
 package graph
 
+import Stack.Stack
 import org.scalatest.FunSuite
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ArrayBuffer
-
-class Stack[A]() {
-  private var q: ArrayBuffer[A] = ArrayBuffer()
-
-  def push(item: A) = {
-    q += item
-  }
-
-  def push(items: List[A]) = {
-    q ++= items
-  }
-
-  def pop(): A = {
-    q.remove(q.size-1)
-  }
-
-  def show(): ArrayBuffer[A] = {
-    q
-  }
-
-  def isEmpty(): Boolean = {
-    q.isEmpty
-  }
-}
-
 
 class DepthFirstSearchSpec extends FunSuite {
 
@@ -36,14 +12,15 @@ class DepthFirstSearchSpec extends FunSuite {
     var journey: ArrayBuffer[A] = ArrayBuffer()
 
     // set start
-    val (start, neighboors) = graph.head
+    val (start, _) = graph.head
     stack.push(start)
 
     while(!stack.isEmpty()) {
         val node = stack.pop()
-        journey += node
         val neighboors = graph.get(node).get
-        for(n <- neighboors if(!journey.contains(n))) {
+        journey += node
+
+        for(n <- neighboors if(!stack.contains(n) && !journey.contains(n))) {
           stack.push(n)
         }
     }
@@ -53,7 +30,7 @@ class DepthFirstSearchSpec extends FunSuite {
 
 
   test("DFS 1") {
-    val graph = ListMap( // NOTE: Map doesnt keep the order when iterating!!!!!!!
+    val graphNoDirected = ListMap( // NOTE: Map doesnt keep the order when iterating!!!!!!!
       "A" -> List("B", "C", "D", "E"),
       "B" -> List("A", "F"),
       "C" -> List("A"),
@@ -66,7 +43,39 @@ class DepthFirstSearchSpec extends FunSuite {
     )
 
     assert(
-      dfs_traversal(graph) === ArrayBuffer("A", "E", "D", "G", "I", "C", "B", "F", "H")
+      dfs_traversal(graphNoDirected) === ArrayBuffer("A", "E", "D", "G", "I", "C", "B", "F", "H")
+    )
+  }
+
+  test("DFS 2") {
+    val graphDirected = ListMap( // NOTE: Map doesnt keep the order when iterating!!!!!!!
+      1 -> List(2, 3),
+      2 -> List(4, 5),
+      3 -> List(5),
+      4 -> List(6),
+      5 -> List(6),
+      6 -> List(7),
+      7 -> List()
+    )
+
+    assert(
+      dfs_traversal(graphDirected) === ArrayBuffer(1, 3, 5, 6, 7, 2, 4)
+    )
+  }
+
+  test("DSF 2: interesting result when I indicate ALL the neighboors of a node") {
+    val graph = ListMap( // NOTE: Map doesnt keep the order when iterating!!!!!!!
+      1 -> List(2, 3),
+      2 -> List(1, 4, 5),
+      3 -> List(1, 5),
+      4 -> List(2, 6),
+      5 -> List(3, 2, 6),
+      6 -> List(4, 5, 7),
+      7 -> List(6)
+    )
+
+    assert(
+      dfs_traversal(graph) === ArrayBuffer(1, 3, 5, 6, 7, 4, 2) // it finishes in 4,2 (which is wrong)
     )
   }
 }
