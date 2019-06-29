@@ -11,6 +11,10 @@ class Stack[A]() {
     q += item
   }
 
+  def push(items: List[A]) = {
+    q ++= items
+  }
+
   def pop(): A = {
     q.remove(q.size-1)
   }
@@ -40,5 +44,13 @@ class StackSpec extends FunSuite {
     val result = q.pop()
     assert(result === 6)
     assert(q.show() === ArrayBuffer(3,5))
+  }
+
+  test("can push multiple items") {
+    val q = new Stack[Int]()
+
+    q.push(List(3, 5, 6))
+
+    assert(q.show() === ArrayBuffer(3, 5, 6))
   }
 }

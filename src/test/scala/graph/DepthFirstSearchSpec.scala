@@ -11,6 +11,10 @@ class Stack[A]() {
     q += item
   }
 
+  def push(items: List[A]) = {
+    q ++= items
+  }
+
   def pop(): A = {
     q.remove(q.size-1)
   }
@@ -32,8 +36,9 @@ class DepthFirstSearchSpec extends FunSuite {
     var journey: ArrayBuffer[String] = ArrayBuffer()
 
     // set start
-    val (start, _) = graph.head
+    val (start, neighboors) = graph.head
     stack.push(start)
+    stack.push(neighboors)
     journey += start
 
     while(!stack.isEmpty()) {
@@ -44,7 +49,7 @@ class DepthFirstSearchSpec extends FunSuite {
           journey += n
         }
     }
-    println(journey)
+    
     journey
   }
 
