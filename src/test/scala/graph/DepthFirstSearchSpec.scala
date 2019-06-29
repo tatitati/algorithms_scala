@@ -31,9 +31,9 @@ class Stack[A]() {
 
 class DepthFirstSearchSpec extends FunSuite {
 
-  def dfs_traversal(graph: ListMap[String, List[String]]): ArrayBuffer[String] = {
-    val stack = new Stack[String]()
-    var journey: ArrayBuffer[String] = ArrayBuffer()
+  def dfs_traversal[A](graph: ListMap[A, List[A]]): ArrayBuffer[A] = {
+    val stack = new Stack[A]()
+    var journey: ArrayBuffer[A] = ArrayBuffer()
 
     // set start
     val (start, neighboors) = graph.head
@@ -52,7 +52,7 @@ class DepthFirstSearchSpec extends FunSuite {
   }
 
 
-  test("BFS") {
+  test("DFS 1") {
     val graph = ListMap( // NOTE: Map doesnt keep the order when iterating!!!!!!!
       "A" -> List("B", "C", "D", "E"),
       "B" -> List("A", "F"),
