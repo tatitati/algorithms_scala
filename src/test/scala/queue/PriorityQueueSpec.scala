@@ -4,48 +4,36 @@ import org.scalatest.FunSuite
 import scala.collection.mutable.ArrayBuffer
 
 class Node(
-    val msg: String = "",
-    val priority: Int = 0
+            val data: String = "",
+            val priority: Int = 0
 ) {
   private var next: Option[Node] = None
 
-  override def toString(): String = {
-    s"""
-       |
-       |priority: $priority
-       |msg: $msg
-       |next:
-       |  $next
-       |
-     """.stripMargin
-  }
-
+  def getNext(): Option[Node] = next
   def setNext(nextNode: Option[Node]): Node = {
     next = nextNode
     this
   }
 
-  def getNext(): Option[Node] = next
-
-  def traverse(msgs: ArrayBuffer[String]): ArrayBuffer[String] = {
-    msgs += this.msg
-
-    this.getNext() match {
-      case Some(node) => node.traverse(msgs)
-      case None => msgs
-    }
-  }
-
   def addNode(newNode: Node): Node = {
-    if(this.priority > newNode.priority){
+    if(newNode.priority > this.priority){
+      newNode.setNext(Some(this))
+      newNode
+    } else {
       this.getNext() match {
         case Some(nextNode) => nextNode.addNode(newNode)
         case None => this.setNext(Some(newNode))
       }
       this
-    } else {
-      newNode.setNext(Some(this))
-      newNode
+    }
+  }
+
+  def traverse(journey: ArrayBuffer[String]): ArrayBuffer[String] = {
+    journey += this.data
+
+    this.getNext() match {
+      case Some(node) => node.traverse(journey)
+      case None => journey
     }
   }
 }
@@ -61,15 +49,16 @@ class PriorityQueueSpec extends FunSuite {
   }
 
   test("can place new node in proper place") {
-    val nodeD = new Node("D10", 10)
-    val nodeC = new Node("C3", 3)
-    val nodeB = new Node("B8", 8)
-    val nodeA = new Node("A5", 5)
+    val nodeD10 = new Node("D10", 10)
+    val nodeC3 = new Node("C3", 3)
+    val nodeB8 = new Node("B8", 8)
+    val nodeA5 = new Node("A5", 5)
 
-    var result1 = nodeA.addNode(nodeB)
-    var result2 = result1.addNode(nodeC)
-    var result3 = result2.addNode(nodeD)
+    val queue = nodeA5
+      .addNode(nodeB8)
+      .addNode(nodeC3)
+      .addNode(nodeD10)
 
-    assert(result3.traverse(ArrayBuffer()) === ArrayBuffer("D10", "B8", "A5", "C3"))
+    assert(queue.traverse(ArrayBuffer()) === ArrayBuffer("D10", "B8", "A5", "C3"))
   }
 }
