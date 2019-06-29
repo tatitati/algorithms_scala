@@ -17,8 +17,8 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 ## Graphs
 
 - [ ] Dijkstra (need queue + linked lists)
-- [ ] Breath first :fire:
-- [ ] Depth first
+- [x] ~Breath first~
+- [ ] Depth first :fire:
 - [ ] Bellman Ford
 
 
