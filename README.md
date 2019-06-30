@@ -67,5 +67,5 @@ https://github.com/tatitati/algorithms/tree/master/Sort
 - [ ] Heap Tree
 - [x] ~Stack~
 - [x] ~Queue~
-- [x] ~Priority Queue (unidirectional)~
+- [x] ~Priority Queue~
  ...
