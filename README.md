@@ -45,9 +45,9 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 ## Machine learning
 
-- [ ] Decission Trees :fire:
+- [ ] Decission Trees
 - [ ] Random Forest
-- [ ] Linear Regression :fire:
+- [ ] Linear Regression
 - [ ] Bayes
 
 ## Sort
@@ -66,7 +66,7 @@ https://github.com/tatitati/algorithms/tree/master/Sort
 
 - [x] ~Binary search tree~
 - [ ] Black-Red Tree
-- [ ] Heap Tree
+- [ ] Heap Tree :fire:
 - [x] ~Stack~
 - [x] ~Queue~
 - [x] ~Priority Queue~
