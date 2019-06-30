@@ -22,6 +22,8 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Depth first (recursive, without stack)
 - [ ] Dijkstra :fire:
 - [ ] Bellman Ford
+- [ ] Kruskal
+- [ ] Prim
 
 
 ## Dynamic Programming
