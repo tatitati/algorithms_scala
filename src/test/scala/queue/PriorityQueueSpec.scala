@@ -8,6 +8,8 @@ case class Node(data: String, priority: Int)
 class PriorityQueue() {
     private var q = ArrayBuffer[Node]()
 
+    def getQ() = q
+
     def nqueue(newitem: Node) = {
       var inserted = false
       for((node, ix) <- q.zipWithIndex if inserted == false) {
@@ -24,12 +26,6 @@ class PriorityQueue() {
 
     def dqueue(): Node = {
       q.remove(0)
-    }
-
-    def getQ() = q
-
-    def show(): Unit = {
-      q.foreach(println(_))
     }
 }
 
