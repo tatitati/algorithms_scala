@@ -24,7 +24,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Dijkstra :fire:
 - [ ] Bellman Ford
 ### Minimum Spanning Tree (MST)
-- [ ] Kruskal
+- [ ] Kruskal :fire:
 - [ ] Prim
 
 
