@@ -1,5 +1,29 @@
-# algorithms_scala
+## Data structures
 
+- [x] ~Binary search tree~
+- [ ] Black-Red Tree
+- [ ] Heap Tree :fire:
+- [x] ~Stack~
+- [x] ~Queue~
+- [x] ~Priority Queue~
+ ...
+## Sort
+
+- [x] ~Bubble sort~
+- [x] ~Insertio sort~
+- [x] ~Merge sort~
+- [x] ~Quick sort~
+- [x] ~Selection sort~
+- [ ] Bucket
+- [ ] Radix
+
+https://github.com/tatitati/algorithms/tree/master/Sort
+
+## Search
+
+- [ ] Binary search
+
+ 
 ## Recursion
 - [x] ~Fibonnaci~
 - [ ] ...
@@ -15,13 +39,17 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursio
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
 ## Graphs
-
+###   Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
 - [ ] Breath first (recursive, without queue)
 - [ ] Depth first (recursive, without stack)
+###   Find shortest path
 - [ ] Dijkstra :fire:
 - [ ] Bellman Ford
+###   Minimum Spanning Tree (MST)
+- [ ] Kruskal :fire:
+- [ ] Prim
 
 
 ## Dynamic Programming
@@ -43,29 +71,9 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 ## Machine learning
 
-- [ ] Decission Trees :fire:
+- [ ] Decission Trees
 - [ ] Random Forest
-- [ ] Linear Regression :fire:
+- [ ] Linear Regression
 - [ ] Bayes
 
-## Sort
 
-- [x] ~Bubble sort~
-- [x] ~Insertio sort~
-- [x] ~Merge sort~
-- [x] ~Quick sort~
-- [x] ~Selection sort~
-- [ ] Bucket
-- [ ] Radix
-
-https://github.com/tatitati/algorithms/tree/master/Sort
-
-# Data structures
-
-- [x] ~Binary search tree~
-- [ ] Black-Red Tree
-- [ ] Heap Tree
-- [x] ~Stack~
-- [x] ~Queue~
-- [x] ~Priority Queue (unidirectional)~
- ...
