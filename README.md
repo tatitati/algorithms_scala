@@ -15,15 +15,15 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursio
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
 ## Graphs
-### Traversal 
+### Graphs__Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
 - [ ] Breath first (recursive, without queue)
 - [ ] Depth first (recursive, without stack)
-### Find shortest path
+### Graphs__Find shortest path
 - [ ] Dijkstra :fire:
 - [ ] Bellman Ford
-### Minimum Spanning Tree (MST)
+### Graphs__Minimum Spanning Tree (MST)
 - [ ] Kruskal :fire:
 - [ ] Prim
 
