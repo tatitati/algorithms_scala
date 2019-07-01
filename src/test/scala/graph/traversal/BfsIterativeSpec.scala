@@ -12,12 +12,12 @@ class BfsIterativeSpec extends FunSuite {
     val queue = new Queue[A]()
     var journey: ArrayBuffer[A] = ArrayBuffer()
 
-    // set start
+    // init
     val (start, _) = graph.head
     queue.nque(start)
     journey += start
 
-    // traverse rest of graph from start
+    // traverse
     while(!queue.isEmpty()) {
       val neighboors = graph.get(queue.dque()).get
 
@@ -31,7 +31,7 @@ class BfsIterativeSpec extends FunSuite {
   }
 
   test("BFS 1") {
-    val graph = ListMap(  // NOTE: Map doesnt keep the order when iterating!!!!!!!
+    val graph = ListMap(  // NOTE: Map doesnt keep the order when iterating, so we use ListMap to keep it
       "A" -> List("B", "C", "D", "E"),
       "B" -> List("A", "F"),
       "C" -> List("A"),
@@ -49,7 +49,7 @@ class BfsIterativeSpec extends FunSuite {
   }
 
   test("BFS 2") {
-    val graphDirected = ListMap( // NOTE: Map doesnt keep the order when iterating!!!!!!!
+    val graphDirected = ListMap(
       1 -> List(2, 3),
       2 -> List(4, 5),
       3 -> List(5),
