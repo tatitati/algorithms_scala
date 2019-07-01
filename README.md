@@ -8,6 +8,7 @@
 - [x] ~Max Priority Queue~
 - [x] ~Min Priority Queue~
  ...
+ 
 ## Sort
 
 - [x] ~Bubble sort~
