@@ -1,4 +1,4 @@
-package graph
+package graph.traversal
 
 import org.scalatest.FunSuite
 import queue.Queue
@@ -6,7 +6,7 @@ import queue.Queue
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
-class BreathFirstSearchSpec extends FunSuite {
+class BfsIterativeSpec extends FunSuite {
 
   def bfs_traversal[A](graph: ListMap[A, List[A]]) = {
     val queue = new Queue[A]()

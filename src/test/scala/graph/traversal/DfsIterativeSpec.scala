@@ -1,11 +1,11 @@
-package graph
+package graph.traversal
 
 import Stack.Stack
 import org.scalatest.FunSuite
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
-class DepthFirstSearchSpec extends FunSuite {
+class DfsIterativeSpec extends FunSuite {
 
   def dfs_traversal[A](graph: ListMap[A, List[A]]): ArrayBuffer[A] = {
     val stack = new Stack[A]()
