@@ -6,8 +6,21 @@ import scala.collection.mutable.ArrayBuffer
 
 class PrimSpec extends FunSuite {
 
+  test("Head in arraybuffer") {
+
+      val list1 = ListMap(
+        "A" -> 10,
+        "B" -> 1,
+        "C" -> 5,
+        "D" -> 8
+      )
+    
+    assert(list1.head === ("D", 8))
+
+  }
+
   test("Understand max/min in ListMap") {
-    val list1 = ListMap(
+    val list1 = Map(
       "A" -> 10,
       "B" -> 1,
       "C" -> 5,
@@ -21,7 +34,7 @@ class PrimSpec extends FunSuite {
   }
 
   test("I can filter and select min") {
-    val list1 = ListMap(
+    val list1 = Map(
       "A" -> 10,
       "B" -> 1,
       "C" -> 5,
@@ -29,22 +42,36 @@ class PrimSpec extends FunSuite {
     )
 
     val keysToFilter = ArrayBuffer("A", "C")
+    val result = list1.filter{ case (k,v) => !keysToFilter.contains(k) }
 
-    val result = list1.filter{ case (k,v) => keysToFilter.contains(k) }
-
-    assert(result == Map("C" -> 5, "A" -> 10))
+    assert(result == Map("B" -> 1, "D" -> 8))
   }
 
   def prim[A](graph: ListMap[String, ListMap[String,Int]]): ArrayBuffer[String] = {
 
     // start
     var primtree: ArrayBuffer[String] = ArrayBuffer()
-    val (startKey, conns) = graph.head //(A,Map(B -> 1, C -> 5))
+    val (startKey, conns) = graph.head
     primtree += startKey
 
 
-    var (nextKey, nextDis) = conns.min
-    primtree += nextKey
+   // main
+    var last = primtree.last
+    var brothers = graph.get(last).get
+    var unvisitedBrothers = brothers.filter{ case (k,v) => !primtree.contains(k) }
+
+    while(!unvisitedBrothers.isEmpty) {
+      println(primtree)
+      println(unvisitedBrothers)
+      println("=====")
+      var (minUnvisitedBrotherKey, dist) = unvisitedBrothers.min
+      println(minUnvisitedBrotherKey)
+      primtree += minUnvisitedBrotherKey
+
+      last = primtree.last
+      brothers = graph.get(last).get
+      unvisitedBrothers = brothers.filter{ case (k,v) => !primtree.contains(k) }
+    }
 
     primtree
   }
