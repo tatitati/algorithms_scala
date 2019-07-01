@@ -14,8 +14,9 @@ class PrimSpec extends FunSuite {
         "C" -> 5,
         "D" -> 8
       )
-    
+
     assert(list1.head === ("D", 8))
+    assert(list1.head === ("A", 10))
 
   }
 
@@ -61,9 +62,6 @@ class PrimSpec extends FunSuite {
     var unvisitedBrothers = brothers.filter{ case (k,v) => !primtree.contains(k) }
 
     while(!unvisitedBrothers.isEmpty) {
-      println(primtree)
-      println(unvisitedBrothers)
-      println("=====")
       var (minUnvisitedBrotherKey, dist) = unvisitedBrothers.min
       println(minUnvisitedBrotherKey)
       primtree += minUnvisitedBrotherKey
