@@ -5,7 +5,8 @@
 - [ ] Heap Tree :fire:
 - [x] ~Stack~
 - [x] ~Queue~
-- [x] ~Priority Queue~
+- [x] ~Max Priority Queue~
+- [x] ~Min Priority Queue~
  ...
 ## Sort
 
