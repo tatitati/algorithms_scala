@@ -3,7 +3,7 @@ package queue
 import org.scalatest.FunSuite
 import scala.collection.mutable.ArrayBuffer
 
-class PriorityQueueSpec extends FunSuite {
+class MaxPriorityQueueSpec extends FunSuite {
   test("ArrayBuffer inser") {
     val a = ArrayBuffer(1,3,7,9)
     a.insert(2,100)
@@ -23,7 +23,7 @@ class PriorityQueueSpec extends FunSuite {
   }
 
   test("I can insert most basic cases") {
-    val q = new PriorityQueue()
+    val q = new MaxPriorityQueue()
     val nodeD10 = Node("D10", 10)
     val nodeC3 = Node("C3", 3)
 
@@ -38,7 +38,7 @@ class PriorityQueueSpec extends FunSuite {
   }
 
   test("I can set new nodes in the proper position") {
-    val q = new PriorityQueue()
+    val q = new MaxPriorityQueue()
     val nodeD10 = Node("D10", 10)
     val nodeC3 = Node("C3", 3)
     val nodeB8 = Node("B8", 8)
@@ -65,7 +65,7 @@ class PriorityQueueSpec extends FunSuite {
   }
 
   test("Can dequeue the most priority") {
-    val q = new PriorityQueue()
+    val q = new MaxPriorityQueue()
     val nodeD10 = Node("D10", 10)
     val nodeC3 = Node("C3", 3)
     val nodeB8 = Node("B8", 8)

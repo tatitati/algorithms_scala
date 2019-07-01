@@ -2,9 +2,7 @@ package queue
 
 import scala.collection.mutable.ArrayBuffer
 
-case class Node(data: String, priority: Int)
-
-class PriorityQueue() {
+class MaxPriorityQueue() {
   private var q = ArrayBuffer[Node]()
 
   def getQ() = q
