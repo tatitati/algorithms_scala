@@ -1,10 +1,40 @@
 package graph.spaningtree
 
 import org.scalatest.FunSuite
-import scala.collection.immutable.ListMap
+import scala.collection.mutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
 class PrimSpec extends FunSuite {
+
+  test("Understand max/min in ListMap") {
+    val list1 = ListMap(
+      "A" -> 10,
+      "B" -> 1,
+      "C" -> 5,
+      "D" -> 8
+    )
+
+    assert(list1.min == ("A", 10))
+    assert(list1.max == ("D", 8))
+    assert(list1.valuesIterator.max == 10)
+    assert(list1.valuesIterator.min == 1)
+  }
+
+  test("I can filter and select min") {
+    val list1 = ListMap(
+      "A" -> 10,
+      "B" -> 1,
+      "C" -> 5,
+      "D" -> 8
+    )
+
+    val keysToFilter = ArrayBuffer("A", "C")
+
+    val result = list1.filter{ case (k,v) => keysToFilter.contains(k) }
+
+    assert(result == Map("C" -> 5, "A" -> 10))
+  }
+
   def prim[A](graph: ListMap[String, ListMap[String,Int]]): ArrayBuffer[String] = {
 
     // start
@@ -15,9 +45,6 @@ class PrimSpec extends FunSuite {
 
     var (nextKey, nextDis) = conns.min
     primtree += nextKey
-
-
-
 
     primtree
   }
