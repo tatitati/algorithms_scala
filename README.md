@@ -1,5 +1,12 @@
-# algorithms_scala
+## Data structures
 
+- [x] ~Binary search tree~
+- [ ] Black-Red Tree
+- [ ] Heap Tree :fire:
+- [x] ~Stack~
+- [x] ~Queue~
+- [x] ~Priority Queue~
+ ...
 ## Sort
 
 - [x] ~Bubble sort~
@@ -12,15 +19,10 @@
 
 https://github.com/tatitati/algorithms/tree/master/Sort
 
-# Data structures
+## Search
 
-- [x] ~Binary search tree~
-- [ ] Black-Red Tree
-- [ ] Heap Tree :fire:
-- [x] ~Stack~
-- [x] ~Queue~
-- [x] ~Priority Queue~
- ...
+- [ ] Binary search
+
  
 ## Recursion
 - [x] ~Fibonnaci~
@@ -37,15 +39,15 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursio
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
 ## Graphs
-### Graphs__Traversal 
+###   Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
 - [ ] Breath first (recursive, without queue)
 - [ ] Depth first (recursive, without stack)
-### Graphs__Find shortest path
+###   Find shortest path
 - [ ] Dijkstra :fire:
 - [ ] Bellman Ford
-### Graphs__Minimum Spanning Tree (MST)
+###   Minimum Spanning Tree (MST)
 - [ ] Kruskal :fire:
 - [ ] Prim
 
