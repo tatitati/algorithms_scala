@@ -1,5 +1,27 @@
 # algorithms_scala
 
+## Sort
+
+- [x] ~Bubble sort~
+- [x] ~Insertio sort~
+- [x] ~Merge sort~
+- [x] ~Quick sort~
+- [x] ~Selection sort~
+- [ ] Bucket
+- [ ] Radix
+
+https://github.com/tatitati/algorithms/tree/master/Sort
+
+# Data structures
+
+- [x] ~Binary search tree~
+- [ ] Black-Red Tree
+- [ ] Heap Tree :fire:
+- [x] ~Stack~
+- [x] ~Queue~
+- [x] ~Priority Queue~
+ ...
+ 
 ## Recursion
 - [x] ~Fibonnaci~
 - [ ] ...
@@ -52,24 +74,4 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 - [ ] Linear Regression
 - [ ] Bayes
 
-## Sort
 
-- [x] ~Bubble sort~
-- [x] ~Insertio sort~
-- [x] ~Merge sort~
-- [x] ~Quick sort~
-- [x] ~Selection sort~
-- [ ] Bucket
-- [ ] Radix
-
-https://github.com/tatitati/algorithms/tree/master/Sort
-
-# Data structures
-
-- [x] ~Binary search tree~
-- [ ] Black-Red Tree
-- [ ] Heap Tree :fire:
-- [x] ~Stack~
-- [x] ~Queue~
-- [x] ~Priority Queue~
- ...
