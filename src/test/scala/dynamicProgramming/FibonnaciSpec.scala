@@ -1,6 +1,8 @@
 package dynamicProgramming
 
+import Tools.Memoizator
 import org.scalatest.{BeforeAndAfterEach, FunSuite}
+
 
 class FibonnaciSpec extends FunSuite with BeforeAndAfterEach {
 

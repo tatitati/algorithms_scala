@@ -1,3 +1,5 @@
+package Tools
+
 object Memoizator {
   var cache: Map[Int, Int] = Map()
 
