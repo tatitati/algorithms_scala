@@ -41,27 +41,31 @@ class PrimSpec extends FunSuite {
 
   test("Prim") {
 
-    def prim(start: Int, graph: List[List[Double]]): Unit = {
-      val minq = new MinPriorityQueue()
-      val primTree = ArrayBuffer[Int]()
-
+    def prim(start: Int, graph: List[List[Double]]): ArrayBuffer[Int] = {
+      // start
+      var primTree = ArrayBuffer[Int]()
+      var minq = new MinPriorityQueue()
       minq.nqueue(Node(start, 0))
 
+      // main
       while(!minq.isEmpty()) {
-        val idnode = minq.dqueue().data()
-        primTree += idnode
+        var idnode = minq.dqueue().data.asInstanceOf[Int]
+        if (!primTree.contains(idnode)) {
+          primTree += idnode
 
-        val row = graph(idnode)
-        for((idnode, weight) <- row.zipWithIndex if weight != X) {
-          minq.nqueue(Node(neigh)
+          var row = graph(idnode)
+          for((weight, idnode) <- row.zipWithIndex if weight != X) {
+            minq.nqueue(Node(idnode, weight))
+          }
         }
-
-
       }
 
+      primTree
     }
 
-    val minSpanningTree = prim(4, graphWeighted)
+    assert(
+      prim(4, graphWeighted) == List(4, 1, 0, 2, 5, 3)
+    )
 
 
   }

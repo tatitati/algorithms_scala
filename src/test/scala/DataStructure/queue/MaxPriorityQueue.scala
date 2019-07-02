@@ -10,7 +10,7 @@ class MaxPriorityQueue() {
   def nqueue(newitem: Node) = {
     var inserted = false
     for((node, ix) <- q.zipWithIndex if inserted == false) {
-      if(newitem.priority > node.priority){
+      if(newitem.getPriority > node.getPriority){
         q.insert(ix, newitem)
         inserted = true
       }

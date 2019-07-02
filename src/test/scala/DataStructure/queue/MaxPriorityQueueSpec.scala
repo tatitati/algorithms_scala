@@ -89,4 +89,17 @@ class MaxPriorityQueueSpec extends FunSuite {
     assert(q.dqueue() == nodeD10)
     assert(q.dqueue() == nodeB8)
   }
+
+  test("In data-node I can put strings or numbers"){
+    val q = new MaxPriorityQueue()
+    val node1 = Node(1111, 10)
+    val node2 = Node("whatever", 3)
+
+
+    q.nqueue(node1)
+    q.nqueue(node2)
+
+    assert(q.dqueue() == node1)
+
+  }
 }
