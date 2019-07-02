@@ -1,3 +1,3 @@
 package DataStructure.queue
 
-case class Node(data: String, priority: Int)
+case class Node(data: Any, priority: Int)

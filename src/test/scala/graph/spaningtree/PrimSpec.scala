@@ -1,6 +1,8 @@
 package graph.spaningtree
 
+import DataStructure.queue.{MinPriorityQueue, Node}
 import org.scalatest.FunSuite
+
 import scala.collection.mutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
@@ -23,14 +25,39 @@ class PrimSpec extends FunSuite {
     assert(2 === a.min)
   }
 
-  test("I can get the index of the minimum one") {
+  test("I can get the index (the number of the next node) of the minimum one") {
     val a = List(6, X, 8, X, X, 2)
-    assert(5 === a.zipWithIndex.min._2)
+    assert(5 === a.zipWithIndex.min._2) // next node would be 5
+    assert(
+      List(
+        (6.0,0),
+        (X,1),
+        (8.0,2),
+        (X,3),
+        (X,4),
+        (2.0,5)
+      ) == a.zipWithIndex, "zipWithIndex return a list of (val, index)")
   }
 
   test("Prim") {
 
     def prim(start: Int, graph: List[List[Double]]): Unit = {
+      val minq = new MinPriorityQueue()
+      val primTree = ArrayBuffer[Int]()
+
+      minq.nqueue(Node(start, 0))
+
+      while(!minq.isEmpty()) {
+        val idnode = minq.dqueue().data()
+        primTree += idnode
+
+        val row = graph(idnode)
+        for((idnode, weight) <- row.zipWithIndex if weight != X) {
+          minq.nqueue(Node(neigh)
+        }
+
+
+      }
 
     }
 
