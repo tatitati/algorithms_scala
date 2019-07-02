@@ -7,23 +7,24 @@ import scala.collection.mutable.ArrayBuffer
 class PrimSpec extends FunSuite {
 
   // adjacency matrix
+  val X = Double.PositiveInfinity
   val graphWeighted = List(
   //To:  0  1  2  3  4  5  // From;
-    List(0, 3, 1, 6, 0, 0),// 0
-    List(3, 0, 5, 0, 3, 0),// 1
-    List(1, 5, 0, 5, 6, 4),// 2
-    List(6, 0, 5, 0, 0, 2),// 3
-    List(0, 3, 6, 0, 0, 6),// 4
-    List(0, 0, 4, 2, 6, 0) // 5
+    List(X, 3, 1, 6, X, X),// 0
+    List(3, X, 5, X, 3, X),// 1
+    List(1, 5, X, 5, 6, 4),// 2
+    List(6, X, 5, X, X, 2),// 3
+    List(X, 3, 6, X, X, 6),// 4
+    List(X, X, 4, 2, 6, X) // 5
   )
 
-  val start = 4
-
   test("I can get the minimum distance in a list") {
-    val a = List(6, 0, 5, 0, 0, 2)
+    val a = List(6, X, 5, X, X, 2)
     assert(2 === a.min)
-
   }
 
-
+  test("I can get the index of the minimum one") {
+    val a = List(6, X, 8, X, X, 2)
+    assert(5 === a.zipWithIndex.min._2)
+  }
 }
