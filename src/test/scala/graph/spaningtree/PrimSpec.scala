@@ -2,8 +2,6 @@ package graph.spaningtree
 
 import DataStructure.queue.{MinPriorityQueue, Node}
 import org.scalatest.FunSuite
-
-import scala.collection.mutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
 class PrimSpec extends FunSuite {
