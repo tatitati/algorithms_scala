@@ -2,15 +2,15 @@ package DataStructure.Tree.binarySearchTree
 
 import scala.collection.mutable.ArrayBuffer
 
-class Node {
-  private var left: Option[Node] = None
-  private var right: Option[Node] = None
+class NodeBinary {
+  private var left: Option[NodeBinary] = None
+  private var right: Option[NodeBinary] = None
   var value: Int = -1
-  private var parent: Option[Node] = None
+  private var parent: Option[NodeBinary] = None
 
   def this(
-            leftNode: Option[Node],
-            rightNode: Option[Node],
+            leftNode: Option[NodeBinary],
+            rightNode: Option[NodeBinary],
             valueNode: Int
           ) {
 
@@ -32,15 +32,15 @@ class Node {
     right = rightNode
   }
 
-  def getLeft(): Option[Node] = left
-  def getRight(): Option[Node] = right
-  def getParent(): Option[Node] = parent
+  def getLeft(): Option[NodeBinary] = left
+  def getRight(): Option[NodeBinary] = right
+  def getParent(): Option[NodeBinary] = parent
 
-  def isBiggerThan(node: Node): Boolean = {
+  def isBiggerThan(node: NodeBinary): Boolean = {
     this.value > node.value
   }
 
-  def setLeft(leftNode: Option[Node]): Node = {
+  def setLeft(leftNode: Option[NodeBinary]): NodeBinary = {
     leftNode match {
       case Some(node) => node.setParent(Some(this))
       case None =>
@@ -50,7 +50,7 @@ class Node {
     this
   }
 
-  def setRight(rightNode: Option[Node]): Node = {
+  def setRight(rightNode: Option[NodeBinary]): NodeBinary = {
     rightNode match {
       case Some(node) => node.setParent(Some(this))
       case None =>
@@ -100,7 +100,7 @@ class Node {
     result
   }
 
-  private def setParent(node: Option[Node]): Node = {
+  private def setParent(node: Option[NodeBinary]): NodeBinary = {
     parent = node
     this
   }

@@ -5,23 +5,23 @@ import scala.collection.mutable.ArrayBuffer
 
 class BinarySearchTreeSpec extends FunSuite {
 
-  def buildTree(): Node = {
+  def buildTree(): NodeBinary = {
     // leaves
-    val node1 = new Node(None, None, 1)
-    val node4 = new Node(None, None, 4)
-    val node6 = new Node(None, None, 6)
-    val node9 = new Node(None, None, 9)
+    val node1 = new NodeBinary(None, None, 1)
+    val node4 = new NodeBinary(None, None, 4)
+    val node6 = new NodeBinary(None, None, 6)
+    val node9 = new NodeBinary(None, None, 9)
     // parent leaves
-    val node3 = new Node(Some(node1), Some(node4), 3)
-    val node7 = new Node(Some(node6), Some(node9), 7)
+    val node3 = new NodeBinary(Some(node1), Some(node4), 3)
+    val node7 = new NodeBinary(Some(node6), Some(node9), 7)
     // root
-    new Node(Some(node3), Some(node7), 5)
+    new NodeBinary(Some(node3), Some(node7), 5)
   }
 
   test("Can compare, get left, and get parent") {
-    val node1 = new Node(None, None, 1)
-    val node4 = new Node(None, None, 4)
-    val node3 = new Node(Some(node1), Some(node4), 3)
+    val node1 = new NodeBinary(None, None, 1)
+    val node4 = new NodeBinary(None, None, 4)
+    val node3 = new NodeBinary(Some(node1), Some(node4), 3)
 
     assert(node1.getParent() === Some(node3))
     assert(node3.getLeft() === Some(node1))
