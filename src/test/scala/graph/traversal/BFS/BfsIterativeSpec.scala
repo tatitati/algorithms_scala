@@ -1,7 +1,7 @@
-package graph.traversal
+package graph.traversal.BFS
 
-import org.scalatest.FunSuite
 import DataStructure.queue.Queue
+import org.scalatest.FunSuite
 
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ArrayBuffer

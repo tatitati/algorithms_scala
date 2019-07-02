@@ -1,7 +1,8 @@
-package graph.traversal
+package graph.traversal.DFS
 
 import DataStructure.Stack.Stack
 import org.scalatest.FunSuite
+
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
