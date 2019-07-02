@@ -24,4 +24,8 @@ class MaxPriorityQueue() {
   def dqueue(): Node = {
     q.remove(0)
   }
+
+  def isEmpty(): Boolean = {
+    q.size == 0
+  }
 }

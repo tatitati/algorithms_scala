@@ -27,4 +27,15 @@ class PrimSpec extends FunSuite {
     val a = List(6, X, 8, X, X, 2)
     assert(5 === a.zipWithIndex.min._2)
   }
+
+  test("Prim") {
+
+    def prim(start: Int, graph: List[List[Double]]): Unit = {
+
+    }
+
+    val minSpanningTree = prim(4, graphWeighted)
+
+
+  }
 }
