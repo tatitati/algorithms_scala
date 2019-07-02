@@ -137,18 +137,15 @@ class KnapsackSpec extends FunSuite {
         val item = items(r)
         val row = matrix(r)
         for(c <- (0 to row.size - 1)) {
-          println(s"${r} -> ${c}")
           var cell = row(c)
 
           if(cell.itemFits(item) && r == 0) {
             cell.add(item)
             matrix = updateCell(matrix, cell, Map(r->c))
-            println(cell)
 
           } else if(!cell.itemFits(item) && r != 0) {
             var currentBestCell = findBestForWeight(matrix, c) // take the one above
             matrix = updateCell(matrix, currentBestCell, Map(r->c))
-            println(currentBestCell)
 
             // TAKE THE ONE ABOVE?
           } else if (cell.itemFits(item) && r != 0) {
@@ -163,11 +160,9 @@ class KnapsackSpec extends FunSuite {
               // VALUE OF CURRENT ITEM + VALUE OF REMAINING SPACE
               cell.importItemsFromCell(bestRemainingWeight)
               cell.add(item)
-              println(cell)
               matrix = updateCell(matrix, cell, Map(r->c))
             } else {
               // TAKE THE ONE ABOVE
-              println(bestCurrentWeight)
               matrix = updateCell(matrix, bestCurrentWeight, Map(r->c))
             }
           }

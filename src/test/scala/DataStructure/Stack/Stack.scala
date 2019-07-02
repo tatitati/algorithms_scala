@@ -1,4 +1,4 @@
-package Stack
+package DataStructure.Stack
 
 import scala.collection.mutable.ArrayBuffer
 

@@ -1,4 +1,4 @@
-package queue
+package DataStructure.queue
 
 import scala.collection.mutable.ArrayBuffer
 

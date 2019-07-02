@@ -1,4 +1,4 @@
-package queue
+package DataStructure.queue
 
 import org.scalatest.FunSuite
 import scala.collection.mutable.ArrayBuffer
@@ -13,7 +13,7 @@ class MaxPriorityQueueSpec extends FunSuite {
   test("I can get indexes in a for loop") {
     val a = ArrayBuffer(1, 3, 100, 7, 9)
     for((item, ix) <- a.zipWithIndex) {
-      println(ix + " => " + item)
+      //      println(ix + " => " + item)
       //      0 => 1
       //      1 => 3
       //      2 => 100

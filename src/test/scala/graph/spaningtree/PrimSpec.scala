@@ -63,7 +63,6 @@ class PrimSpec extends FunSuite {
 
     while(!unvisitedBrothers.isEmpty) {
       var (minUnvisitedBrotherKey, dist) = unvisitedBrothers.min
-      println(minUnvisitedBrotherKey)
       primtree += minUnvisitedBrotherKey
 
       last = primtree.last

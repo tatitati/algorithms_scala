@@ -1,7 +1,7 @@
 package graph.traversal
 
 import org.scalatest.FunSuite
-import queue.Queue
+import DataStructure.queue.Queue
 
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ArrayBuffer
