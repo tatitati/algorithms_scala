@@ -11,7 +11,7 @@
 - [ ] Operation DELETE
 - [x] ~Operation SEARCH~
 
-### HEAP
+### Heap
 - [ ] Heap Tree :fire:
 
 ### Black-Red
