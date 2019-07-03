@@ -1,19 +1,22 @@
 ## Data structures
-### Tree
-- [ ] ~Binary search tree~
--- [x] ~Traversal INORDER~
--- [ ] Traversal PREORDER
--- [ ] Traversal POSTORDER
--- [x] ~Define MIN~
--- [x] ~Define MAX~
--- [ ] Define PRECESSOR :fire:
--- [ ] Define SUCESSOR :fire:
--- [ ] Operation INSERT
--- [ ] Operation DELETE
+### Binary Tree
+- [x] ~Traversal INORDER~
+- [ ] Traversal PREORDER
+- [ ] Traversal POSTORDER
+- [x] ~Define MIN~
+- [x] ~Define MAX~
+- [ ] Define PRECESSOR :fire:
+- [ ] Define SUCESSOR :fire:
+- [ ] Operation INSERT
+- [ ] Operation DELETE
+- [x] ~Operation SEARCH~
 
-
-- [ ] Black-Red Tree
+## HEAP
 - [ ] Heap Tree :fire:
+
+## Black-Red
+- [ ] Black-Red Tree
+
 
 
 ### Queue
