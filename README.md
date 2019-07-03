@@ -11,13 +11,11 @@
 - [ ] Operation DELETE
 - [x] ~Operation SEARCH~
 
-## HEAP
+### HEAP
 - [ ] Heap Tree :fire:
 
-## Black-Red
+### Black-Red
 - [ ] Black-Red Tree
-
-
 
 ### Queue
 - [x] ~Queue~
