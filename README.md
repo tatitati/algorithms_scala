@@ -70,7 +70,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Bellman Ford
 ###   Minimum Spanning Tree (MST)
 - [ ] Kruskal 
-- [x] ~Prim (with Min Priority Queue)~
+- [x] ~Prim (with Min Priority Queue + Adjacency matrix)~
 
 
 ## Dynamic Programming
