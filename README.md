@@ -35,6 +35,7 @@
 - [x] ~Merge sort~
 - [x] ~Quick sort~
 - [x] ~Selection sort~
+- [ ] Heap sort
 - [ ] Bucket
 - [ ] Radix
 
