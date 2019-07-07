@@ -28,7 +28,7 @@
  ...
  
  ### Linked list
- - [ ] Simple : Fire:
+ - [ ] Simple :Fire:
  - [ ] Double :fire:
  - [ ] Circular
  
