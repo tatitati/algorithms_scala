@@ -10,6 +10,8 @@
 - [ ] Operation INSERT
 - [ ] Operation DELETE
 - [x] ~Operation SEARCH~
+- [ ] Left Rotation
+- [ ] Right Rotation
 
 ### Heap
 - [ ] Heap Tree :fire:
