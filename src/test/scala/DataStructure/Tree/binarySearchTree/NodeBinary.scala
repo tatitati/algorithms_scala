@@ -59,34 +59,24 @@ class NodeBinary {
     this
   }
 
-  def findMin(): Int = {
+  def findMin(): NodeBinary = {
     this.getLeft() match {
-      case Some(node) => node.getLeft().get.findMin()
-      case None => this.value
+      case Some(node) => node.findMin()
+      case None => this
     }
   }
 
-  def findMax(): Int = {
+  def findMax(): NodeBinary = {
     this.getRight() match {
-      case Some(node) => node.getRight().get.findMax()
-      case None => this.value
+      case Some(node) => node.findMax()
+      case None => this
     }
   }
 
-  def searchValueInTree(n: Int, trace: ArrayBuffer[Int]): ArrayBuffer[Int] = {
-    trace += this.value
-
+  def searchNodeInTree(value: Int): NodeBinary = {
     this match {
-      case t if (n < t.value) => t.getLeft().get.searchValueInTree(n, trace)
-      case t if (n > t.value) => t.getRight().get.searchValueInTree(n, trace)
-      case _ => trace
-    }
-  }
-
-  def searchNodeInTree(value: Int, n: NodeBinary): NodeBinary = {
-    this match {
-      case t if (value < t.value) => t.getLeft().get.searchNodeInTree(value, n)
-      case t if (value > t.value) => t.getRight().get.searchNodeInTree(value, n)
+      case t if (value < t.value) => t.getLeft().get.searchNodeInTree(value)
+      case t if (value > t.value) => t.getRight().get.searchNodeInTree(value)
       case _ => this
     }
   }
@@ -108,9 +98,21 @@ class NodeBinary {
     result
   }
 
-//  def precesor(i: Int): Int = {
-//
-//  }
+  def precesor(i: Int): NodeBinary = {
+    val node = searchNodeInTree(i)
+    node.getLeft() match {
+      case Some(node) => node.findMax()
+      case _ => this
+    }
+  }
+
+  def sucesor(i: Int): NodeBinary = {
+    val node = searchNodeInTree(i)
+    node.getRight() match {
+      case Some(node) => node.findMin()
+      case _ => this
+    }
+  }
 
   private def setParent(node: Option[NodeBinary]): NodeBinary = {
     parent = node
