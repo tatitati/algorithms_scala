@@ -83,6 +83,14 @@ class NodeBinary {
     }
   }
 
+  def searchNodeInTree(value: Int, n: NodeBinary): NodeBinary = {
+    this match {
+      case t if (value < t.value) => t.getLeft().get.searchNodeInTree(value, n)
+      case t if (value > t.value) => t.getRight().get.searchNodeInTree(value, n)
+      case _ => this
+    }
+  }
+
   def inOrderTraversal(result: ArrayBuffer[Int]): ArrayBuffer[Int] = {
     // left
     if(this.getLeft() != None) {
@@ -99,6 +107,10 @@ class NodeBinary {
 
     result
   }
+
+//  def precesor(i: Int): Int = {
+//
+//  }
 
   private def setParent(node: Option[NodeBinary]): NodeBinary = {
     parent = node

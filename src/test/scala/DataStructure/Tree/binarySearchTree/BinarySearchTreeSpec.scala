@@ -38,12 +38,19 @@ class BinarySearchTreeSpec extends FunSuite {
     assert(tree.findMax() === 9)
   }
 
-  test("can search") {
+  test("can search value and show trace") {
     var tree = buildTree()
     val n = 6
     var trace = ArrayBuffer[Int]()
 
     assert(tree.searchValueInTree(n, trace) === ArrayBuffer(5, 7, 6))
+  }
+
+  test("Can find Node") {
+    val tree = buildTree()
+    var node = tree.searchNodeInTree(6, tree)
+
+    assert(node.value === 6)
   }
 
   test("can inorder traversal") {
@@ -52,5 +59,4 @@ class BinarySearchTreeSpec extends FunSuite {
 
       assert(result === ArrayBuffer(1,3,4,5,6,7,9))
   }
-
 }
