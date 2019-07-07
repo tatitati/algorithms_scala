@@ -2,12 +2,12 @@
 ### Binary Tree
 - [x] ~Traversal INORDER~
 - [ ] Traversal PREORDER
-- [ ] Traversal POSTORDER
+- [ ] Traversal POSTORDER :fire:
 - [x] ~Define MIN~
 - [x] ~Define MAX~
 - [x] ~Define PRECESSOR~
 - [x] ~Define SUCESSOR~
-- [ ] Operation INSERT
+- [ ] Operation INSERT :fire:
 - [ ] Operation DELETE
 - [x] ~Operation SEARCH~
 - [ ] Left Rotation
