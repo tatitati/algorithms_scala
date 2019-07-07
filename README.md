@@ -5,8 +5,8 @@
 - [ ] Traversal POSTORDER
 - [x] ~Define MIN~
 - [x] ~Define MAX~
-- [ ] Define PRECESSOR :fire:
-- [ ] Define SUCESSOR :fire:
+- [x] ~Define PRECESSOR~
+- [x] ~Define SUCESSOR~
 - [ ] Operation INSERT
 - [ ] Operation DELETE
 - [x] ~Operation SEARCH~
