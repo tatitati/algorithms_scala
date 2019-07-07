@@ -25,8 +25,12 @@
 
 ### Stack
 - [x] ~Stack~
-
  ...
+ 
+ ### Linked list
+ - [ ] Simple : Fire:
+ - [ ] Double :fire:
+ - [ ] Circular
  
 ## Sort
 
