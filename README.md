@@ -1,12 +1,31 @@
 ## Data structures
+### Binary Tree
+- [x] ~Traversal INORDER~
+- [ ] Traversal PREORDER
+- [ ] Traversal POSTORDER
+- [x] ~Define MIN~
+- [x] ~Define MAX~
+- [ ] Define PRECESSOR :fire:
+- [ ] Define SUCESSOR :fire:
+- [ ] Operation INSERT
+- [ ] Operation DELETE
+- [x] ~Operation SEARCH~
 
-- [x] ~Binary search tree~
-- [ ] Black-Red Tree
+### Heap
 - [ ] Heap Tree :fire:
-- [x] ~Stack~
+
+### Black-Red
+- [ ] Black-Red Tree
+
+### Queue
 - [x] ~Queue~
 - [x] ~Max Priority Queue~
 - [x] ~Min Priority Queue~
+- [ ] With linked list
+
+### Stack
+- [x] ~Stack~
+
  ...
  
 ## Sort
@@ -16,6 +35,7 @@
 - [x] ~Merge sort~
 - [x] ~Quick sort~
 - [x] ~Selection sort~
+- [ ] Heap sort
 - [ ] Bucket
 - [ ] Radix
 
@@ -51,7 +71,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Bellman Ford
 ###   Minimum Spanning Tree (MST)
 - [ ] Kruskal 
-- [ ] Prim :fire:
+- [x] ~Prim (with Min Priority Queue + Adjacency matrix)~
 
 
 ## Dynamic Programming
