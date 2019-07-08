@@ -91,6 +91,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 ###   Minimum Spanning Tree (MST)
 - [ ] Kruskal 
 - [x] ~Prim (with Min Priority Queue + Adjacency matrix)~
+- [ ] Prim (with node-color)
 - [ ] Mathematical analysis
 
 
