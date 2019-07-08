@@ -70,8 +70,8 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 ###   Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
-- [ ] Breath first (recursive, without queue)
-- [ ] Depth first (recursive, without stack)
+- [ ] Breath first (recursive, without queue) :fire:
+- [ ] Depth first (recursive, without stack) :fire:
 ###   Find shortest path
 - [ ] Dijkstra :fire:
 - [ ] Bellman Ford
