@@ -112,11 +112,19 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 ## Linear Programming
 
+- [ ] ...
+
 ## Bloom filters
+
+- [ ] ...
 
 ## LineSweep
 
+- [ ] ...
+
 ## Convex Hull
+
+- [ ] ...
 
 ## Machine learning
 
