@@ -105,9 +105,18 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming
 
-## Clustering
+## Clustering (Spacial tree)
 
 - [ ] K-means
+
+
+## Linear Programming
+
+## Bloom filters
+
+## LineSweep
+
+## Convex Hull
 
 ## Machine learning
 
