@@ -61,4 +61,20 @@ class BinarySearchTreeSpec extends FunSuite {
     var tree = buildTree()
     assert(tree.sucesor(5).value === 6)
   }
+
+  test("I can insert a node to the tree") {
+    var root = new NodeBinary(None, None, 5)
+    var node7 = new NodeBinary(None, None, 7)
+    var node8 = new NodeBinary(None, None, 8)
+    var node4 = new NodeBinary(None, None, 4)
+    var node3 = new NodeBinary(None, None, 3)
+
+    root.insert(node7)
+    root.insert(node8)
+    root.insert(node4)
+    root.insert(node3)
+
+    val result = root.inOrderTraversal(new ArrayBuffer())
+    assert(result == ArrayBuffer(3, 4, 5, 7, 8))
+  }
 }

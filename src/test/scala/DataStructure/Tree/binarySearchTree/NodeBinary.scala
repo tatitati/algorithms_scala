@@ -114,6 +114,27 @@ class NodeBinary {
     }
   }
 
+  def insert(newnode: NodeBinary): Unit = {
+    if(newnode.value < this.value) {
+      this.getLeft() match {
+        case Some(leftNode) => leftNode.insert(newnode)
+        case None => {
+          newnode.setParent(Some(this))
+          this.setLeft(Some(newnode))
+        }
+      }
+
+    } else if(newnode.value > this.value) {
+      this.getRight() match {
+        case Some(rightNode) => rightNode.insert(newnode)
+        case None => {
+          newnode.setParent(Some(this))
+          this.setRight(Some(newnode))
+        }
+      }
+    }
+  }
+
   private def setParent(node: Option[NodeBinary]): NodeBinary = {
     parent = node
     this
