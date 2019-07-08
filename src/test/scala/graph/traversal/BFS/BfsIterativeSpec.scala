@@ -2,7 +2,6 @@ package graph.traversal.BFS
 
 import DataStructure.queue.Queue
 import org.scalatest.FunSuite
-
 import scala.collection.immutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
@@ -33,12 +32,15 @@ class BfsIterativeSpec extends FunSuite {
   test("BFS 1") {
     val graph = ListMap(  // NOTE: Map doesnt keep the order when iterating, so we use ListMap to keep it
       "A" -> List("B", "C", "D", "E"),
+
       "B" -> List("A", "F"),
       "C" -> List("A"),
       "D" -> List("A", "G"),
       "E" -> List("A"),
+
       "F" -> List("B", "H"),
       "G" -> List("D", "I"),
+
       "H" -> List("F"),
       "I" -> List("G")
     )

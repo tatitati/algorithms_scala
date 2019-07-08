@@ -4,11 +4,13 @@ case class ListNodeUnidirectional(
                      val value: String,
                      var next: Option[ListNodeUnidirectional] = None
     ) {
-  def addNext(newNode: ListNodeUnidirectional): Unit = {
+  def addNext(newNode: ListNodeUnidirectional): ListNodeUnidirectional = {
     next match {
       case Some(node) => node.addNext(newNode)
       case None => next = Some(newNode)
     }
+
+    this
   }
 
   def count(): Int = {

@@ -14,8 +14,7 @@ class LinkedListSpec extends FunSuite {
     val root = ListNodeUnidirectional("node A")
     val nodeB = ListNodeUnidirectional("node B")
     val nodeC = ListNodeUnidirectional("node C")
-    root.addNext(nodeB)
-    root.addNext(nodeC)
+    root.addNext(nodeB).addNext(nodeC)
 
     assert(root.count === 3)
   }
