@@ -55,7 +55,7 @@ https://github.com/tatitati/algorithms/tree/master/Sort
 
 ## Search
 
-- [ ] Binary search]
+- [ ] Binary search
 - [ ] Mathematical analysis
 
  
