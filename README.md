@@ -79,7 +79,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 ###   Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
-- [ ] Breath first (with node-colors) :fire:
+- [x] Breath first (with node-colors)
 - [ ] Depth first (with node-colors) :fire:
 - [ ] Breath first (recursive, without queue) :fire:
 - [ ] Depth first (recursive, without stack) :fire:
