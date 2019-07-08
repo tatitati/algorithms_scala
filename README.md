@@ -7,37 +7,37 @@
 - [x] ~Define MAX~
 - [x] ~Define PRECESSOR~
 - [x] ~Define SUCESSOR~
-- [ ] Operation INSERT :fire:
+- [x] ~Operation INSERT~
 - [ ] Operation DELETE
 - [x] ~Operation SEARCH~
 - [ ] Left Rotation
 - [ ] Right Rotation
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
 
 ### Heap
 - [ ] Heap Tree :fire:
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
 
 ### Black-Red
 - [ ] Black-Red Tree
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
 
 ### Queue
 - [x] ~Queue~
 - [x] ~Max Priority Queue~
 - [x] ~Min Priority Queue~
 - [ ] With linked list
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
 
 ### Stack
 - [x] ~Stack~
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
  
  ### Linked list
- - [ ] Simple :fire:
+ - [x] ~Simple~
  - [ ] Double :fire:
  - [ ] Circular
- - [ ] Mathematical analysys
+ - [ ] Mathematical analysis
  
 ## Sort
 
@@ -49,20 +49,20 @@
 - [ ] Heap sort
 - [ ] Bucket
 - [ ] Radix
-- [ ] Mathematical analysys for each
+- [ ] Mathematical analysis for each
 
 https://github.com/tatitati/algorithms/tree/master/Sort
 
 ## Search
 
 - [ ] Binary search]
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
 
  
 ## Recursion
 - [x] ~Fibonnaci~
 - [ ] ...
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
 
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursion
 
@@ -71,7 +71,7 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursio
 - [x] ~Laberinth resolver~
 - [ ] Sudoku resolver
 - [ ] ADN sequence
-- [ ] Mathematical analysys for each
+- [ ] Mathematical analysis for each
 
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
@@ -79,17 +79,20 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 ###   Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
+- [ ] Breath first (with node-colors) :fire:
+- [ ] Depth first (with node-colors) :fire:
 - [ ] Breath first (recursive, without queue) :fire:
 - [ ] Depth first (recursive, without stack) :fire:
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
 ###   Find shortest path
 - [ ] Dijkstra :fire:
 - [ ] Bellman Ford
-- [ ] Mathematical analysys
+- [ ] Mathematical analysis
 ###   Minimum Spanning Tree (MST)
 - [ ] Kruskal 
 - [x] ~Prim (with Min Priority Queue + Adjacency matrix)~
-- [ ] Mathematical analysys
+- [ ] Prim (with node-color)
+- [ ] Mathematical analysis
 
 
 ## Dynamic Programming
