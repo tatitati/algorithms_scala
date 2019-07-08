@@ -12,27 +12,32 @@
 - [x] ~Operation SEARCH~
 - [ ] Left Rotation
 - [ ] Right Rotation
+- [ ] Mathematical analysys
 
 ### Heap
 - [ ] Heap Tree :fire:
+- [ ] Mathematical analysys
 
 ### Black-Red
 - [ ] Black-Red Tree
+- [ ] Mathematical analysys
 
 ### Queue
 - [x] ~Queue~
 - [x] ~Max Priority Queue~
 - [x] ~Min Priority Queue~
 - [ ] With linked list
+- [ ] Mathematical analysys
 
 ### Stack
 - [x] ~Stack~
- ...
+- [ ] Mathematical analysys
  
  ### Linked list
  - [ ] Simple :fire:
  - [ ] Double :fire:
  - [ ] Circular
+ - [ ] Mathematical analysys
  
 ## Sort
 
@@ -44,17 +49,20 @@
 - [ ] Heap sort
 - [ ] Bucket
 - [ ] Radix
+- [ ] Mathematical analysys for each
 
 https://github.com/tatitati/algorithms/tree/master/Sort
 
 ## Search
 
-- [ ] Binary search
+- [ ] Binary search]
+- [ ] Mathematical analysys
 
  
 ## Recursion
 - [x] ~Fibonnaci~
 - [ ] ...
+- [ ] Mathematical analysys
 
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursion
 
@@ -63,6 +71,7 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursio
 - [x] ~Laberinth resolver~
 - [ ] Sudoku resolver
 - [ ] ADN sequence
+- [ ] Mathematical analysys for each
 
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
@@ -72,12 +81,15 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [x] ~Depth first (iterative, with stack)~
 - [ ] Breath first (recursive, without queue) :fire:
 - [ ] Depth first (recursive, without stack) :fire:
+- [ ] Mathematical analysys
 ###   Find shortest path
 - [ ] Dijkstra :fire:
 - [ ] Bellman Ford
+- [ ] Mathematical analysys
 ###   Minimum Spanning Tree (MST)
 - [ ] Kruskal 
 - [x] ~Prim (with Min Priority Queue + Adjacency matrix)~
+- [ ] Mathematical analysys
 
 
 ## Dynamic Programming
