@@ -2,7 +2,7 @@
 ### Binary Tree
 - [x] ~Traversal INORDER~
 - [ ] Traversal PREORDER
-- [ ] Traversal POSTORDER :fire:
+- [ ] Traversal POSTORDER :fire::fire:
 - [x] ~Define MIN~
 - [x] ~Define MAX~
 - [x] ~Define PRECESSOR~
