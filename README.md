@@ -2,7 +2,7 @@
 ### Binary Tree
 - [x] ~Traversal INORDER~
 - [ ] Traversal PREORDER
-- [ ] Traversal POSTORDER :fire:
+- [ ] Traversal POSTORDER :fire::fire:
 - [x] ~Define MIN~
 - [x] ~Define MAX~
 - [x] ~Define PRECESSOR~
@@ -55,7 +55,7 @@ https://github.com/tatitati/algorithms/tree/master/Sort
 
 ## Search
 
-- [ ] Binary search]
+- [ ] Binary search
 - [ ] Mathematical analysis
 
  
@@ -79,7 +79,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 ###   Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
-- [ ] Breath first (with node-colors) :fire:
+- [x] ~Breath first (with node-colors)~
 - [ ] Depth first (with node-colors) :fire:
 - [ ] Breath first (recursive, without queue) :fire:
 - [ ] Depth first (recursive, without stack) :fire:
@@ -93,6 +93,10 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [x] ~Prim (with Min Priority Queue + Adjacency matrix)~
 - [ ] Prim (with node-color)
 - [ ] Mathematical analysis
+###   Component strongly connected 
+- [ ] ....
+###   Classifying edges
+- [ ] ....
 
 
 ## Dynamic Programming
