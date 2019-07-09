@@ -86,7 +86,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Mathematical analysis
 ###   Find shortest path
 - [ ] Dijkstra :fire:
-- [ ] Bellman Ford
+- [x] ~Bellman Ford~
 - [ ] Mathematical analysis
 ###   Minimum Spanning Tree (MST)
 - [ ] Kruskal 
