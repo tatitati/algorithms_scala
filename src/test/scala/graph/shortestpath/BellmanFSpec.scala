@@ -71,7 +71,7 @@ class BellmanFSpec extends FunSuite {
   }
 
 
-  test("I can modify object inside of inmutable List") {
+  test("Bellman ford") {
     bellmanford(graph)
 
     // summarize result
