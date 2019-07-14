@@ -3,7 +3,6 @@ package graph.shortestpath
 import org.scalatest.FunSuite
 import scala.collection.SortedMap
 
-
 class DijkstraSpec extends FunSuite {
 
   val inf = Double.PositiveInfinity
@@ -18,15 +17,28 @@ class DijkstraSpec extends FunSuite {
 
   def dijkstra() = {
     var dist = SortedMap[String, Double]()
-    var prev = SortedMap[String, String]()
-
+    var pred = SortedMap[String, String]()
 
     //init
-    for((vertexKey, adj) <- graph) {
-      dist += (vertexKey -> inf)
+    for((vKey, _ )<- graph) {
+      dist += (vKey -> inf)
+      pred += (vKey -> "")
     }
     dist += ("A" -> 0)
 
+
+    // process
+    for((u, adjs) <- graph) { // u = current node
+      for((v, d) <- adjs) {   // v = adjs nodes
+        if(dist(u) + d < dist(v)) {
+          dist += (v -> (dist(u) + d))
+          pred += (v -> u)
+        }
+      }
+    }
+
+    println(dist)
+    println(pred)
 
 
   }
