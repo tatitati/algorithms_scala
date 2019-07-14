@@ -9,15 +9,15 @@ import scala.collection.mutable.ArrayBuffer
 
 
 case class Edge(
-   from: String,
-   to: String,
-   weight: Double
+                 from: String,
+                 to: String,
+                 w: Double
 )
 
 case class Vertex(
-   id: String,
-   var distance: Double,
-   edgesDest: List[Edge]
+                   id: String,
+                   var d: Double,
+                   edgesDest: List[Edge]
 )
 
 
@@ -55,12 +55,12 @@ class BellmanFSpec extends FunSuite {
 
   def bellmanford(graph: SortedMap[String, Vertex]) = {
     // relax
-    for((keyVertex, fromVertex) <- graph) {
-      for(edge <- fromVertex.edgesDest) {
-        var toVertex = graph.get(edge.to).get
+    for((keyVertex, u) <- graph) {
+      for(edge <- u.edgesDest) { // u = current vertex (from vertex)
+        var v = graph.get(edge.to).get // v = adj vertext (to vertex)
 
-        if(fromVertex.distance != inf && fromVertex.distance + edge.weight < toVertex.distance) {
-          toVertex.distance = fromVertex.distance + edge.weight
+        if(u.d != inf && u.d + edge.w < v.d) {
+          v.d = u.d + edge.w
         }
 
       }
@@ -77,7 +77,7 @@ class BellmanFSpec extends FunSuite {
     // summarize result
     var vertextWithWeights = SortedMap[String, Double]()
     for((keyVertex, fromVertex) <- graph) {
-      vertextWithWeights = vertextWithWeights + (keyVertex -> fromVertex.distance)
+      vertextWithWeights = vertextWithWeights + (keyVertex -> fromVertex.d)
     }
 
     assert(vertextWithWeights === Map(
