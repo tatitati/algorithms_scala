@@ -85,7 +85,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] Depth first (recursive, without stack) :fire:
 - [ ] Mathematical analysis
 ###   Find shortest path
-- [ ] Dijkstra :fire:
+- [x] ~Dijkstra~
 - [x] ~Bellman Ford~
 - [ ] Mathematical analysis
 ###   Minimum Spanning Tree (MST)
