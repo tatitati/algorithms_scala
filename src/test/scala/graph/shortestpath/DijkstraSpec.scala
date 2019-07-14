@@ -1,7 +1,9 @@
 package graph.shortestpath
 
 import org.scalatest.FunSuite
+
 import scala.collection.SortedMap
+import DataStructure.Stack.Stack
 
 class DijkstraSpec extends FunSuite {
 
@@ -15,7 +17,7 @@ class DijkstraSpec extends FunSuite {
     "F" -> SortedMap("C" -> 3, "D" -> 2, "E" -> 5)
   )
 
-  def dijkstra() = {
+  def dijkstra(): (SortedMap[String, Double], SortedMap[String, String]) = {
     var dist = SortedMap[String, Double]()
     var pred = SortedMap[String, String]()
 
@@ -37,14 +39,13 @@ class DijkstraSpec extends FunSuite {
       }
     }
 
-    println(dist)
-    println(pred)
-
-
+    (dist, pred)
   }
 
   test("Dijkstra") {
-    dijkstra()
-  }
+    val (dist, pred) = dijkstra()
 
+    assert(dist == SortedMap("A" -> 0.0, "B" -> 3.0, "C" -> 5.0, "D" -> 7.0, "E" -> 9.0, "F" -> 8.0))
+    assert(pred == SortedMap("A" -> "" , "B" -> "A", "C" -> "A", "D" -> "B", "E" -> "D", "F" -> "C"))
+  }
 }
