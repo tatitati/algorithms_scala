@@ -1,4 +1,4 @@
-## Data structures
+## [Data structures](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/DataStructure)
 ### Binary Tree
 - [x] ~Traversal INORDER~
 - [ ] Traversal PREORDER
