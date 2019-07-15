@@ -1,4 +1,4 @@
-package graph.shortestpath
+package graph.shortestpath.BellmanFord
 
 import org.scalatest.FunSuite
 import DataStructure.queue.Queue
