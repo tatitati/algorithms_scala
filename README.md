@@ -99,7 +99,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] ....
 
 
-## Dynamic Programming
+## [Dynamic Programming](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming)
 - [x] ~Fibonnaci Down-Top~
 - [x] ~Fibonnaci Top-Down~
 - [ ] Change coins
