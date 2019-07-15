@@ -1,10 +1,11 @@
 package graph.shortestpath.Dijkstra
 
 import scala.collection.SortedMap
+import scala.collection.immutable.ListMap
 
 trait Dijkstra {
 
-  def solve(graph: SortedMap[String, SortedMap[String, Int]]): (SortedMap[String, Double], SortedMap[String, String]) = {
+  def solve(graph: ListMap[String, ListMap[String, Int]]): (SortedMap[String, Double], SortedMap[String, String]) = {
     val infinity = Double.PositiveInfinity
     var dist = SortedMap[String, Double]()
     var pred = SortedMap[String, String]()
@@ -19,9 +20,11 @@ trait Dijkstra {
 
     // process
     for((u, adjs) <- graph) { // u = current node
-      println("- " + u)
-      for((v, d) <- adjs) {   // v = adjs nodes
-        println("       ------- "+ dist(v) + " --->" + v)
+      println("- " + u + " (" + dist(u) + " )")
+
+      for((v, d) <- adjs if v != "") {   // v = adjs nodes
+        println("       ------- "+ d + " --->" + v)
+
         if(dist(u) + d < dist(v)) {
           dist += (v -> (dist(u) + d))
           pred += (v -> u)
