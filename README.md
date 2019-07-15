@@ -75,7 +75,7 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursio
 
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
-## Graphs
+## [Graphs](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/graph)
 ###   Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
