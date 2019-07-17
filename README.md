@@ -14,6 +14,10 @@
 - [ ] Right Rotation
 - [ ] Mathematical analysis
 
+
+### Hash map
+- [ ] Bloom filters :fire::fire:
+
 ### Heap
 - [ ] Heap Tree :fire:
 - [ ] Mathematical analysis
@@ -126,9 +130,6 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 - [ ] ...
 
-## Bloom filters
-
-- [ ] ...
 
 ## LineSweep
 
