@@ -108,7 +108,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [x] ~Fibonnaci Down-Top~
 - [x] ~Fibonnaci Top-Down~
 - [ ] Change coins
-- [ ] Cutting rod
+- [ ] Cutting rod :fire:
 - [x] ~1/0 Knapsack~
 - [ ] Matrix multiplication
 - [ ] Longest Common substring
