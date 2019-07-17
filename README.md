@@ -97,6 +97,11 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] ....
 ###   Classifying edges
 - [ ] ....
+###  All pairs shortest paths
+- [ ] Floyd-Warshall :fire:
+- [ ] Johnson's
+
+
 
 
 ## [Dynamic Programming](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming)
