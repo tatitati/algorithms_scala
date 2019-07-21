@@ -18,17 +18,20 @@ class FloydWarshallSpec extends FunSuite {
 
       // init
       for((vx, adjs) <- G) {
+        dist(vx) = ListMap()
+        pred(vx) = ListMap()
+
         for((vy, _) <- G) {
           dist(vx)(vy) = infinity
+          dist(vx)(vx) = 0
           pred(vx)(vy) = ""
         }
 
-        dist(vx)(vx) = 0
 
         // set initial/original distances
-        for((vy, w) <- adjs) {
-          dist(vx)(vy) = w
-          pred(vx)(vy) = vx
+        for((v, w) <- adjs) {
+          dist(vx)(v) = w
+          pred(vx)(v) = vx
         }
 
       }
@@ -61,10 +64,10 @@ class FloydWarshallSpec extends FunSuite {
     var (dist, pred) = floydWarshall(graph)
 
     assert(dist == ListMap(
-      "1" -> ListMap("2" -> -1.0, "1" -> 0.0, "4" -> 0.0, "3" -> -2.0),
-      "2" -> ListMap("2" -> 0.0,  "1" -> 4.0, "4" -> 4.0, "3" -> 2.0),
-      "3" -> ListMap("2" -> 1.0,  "1" -> 5.0, "4" -> 2.0, "3" -> 0.0),
-      "4" -> ListMap("2" -> -1.0, "1" -> 3.0, "4" -> 0.0, "3" -> 1.0)
+      "1" -> ListMap("1" -> 0.0, "2" -> -1.0, "3" -> -2.0, "4" -> 0.0),
+      "2" -> ListMap("1" -> 4.0, "2" -> 0.0,  "3" -> 2.0,  "4" -> 4.0),
+      "3" -> ListMap("1" -> 5.0, "2" -> 1.0,  "3" -> 0.0,  "4" -> 2.0),
+      "4" -> ListMap("1" -> 3.0, "2" -> -1.0, "3" -> 1.0,  "4" -> 0.0)
     )
     )
 
