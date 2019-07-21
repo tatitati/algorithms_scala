@@ -17,27 +17,18 @@ class FloydWarshallSpec extends FunSuite {
       var pred: ListMap[String, ListMap[String, String]] = ListMap()
 
       // init
-      for((u, adjs) <- G) {
-        var distsU: ListMap[String, Double] = ListMap()
-        var predU: ListMap[String, String] = ListMap()
-
-        for((v, _) <- G) {
-          if (u == v) {
-            distsU += (v -> 0)
-          } else {
-            distsU += (v -> infinity)
-          }
-
-          predU += (v -> "")
+      for((vx, adjs) <- G) {
+        for((vy, _) <- G) {
+          dist(vx)(vy) = infinity
+          pred(vx)(vy) = ""
         }
 
-        pred += (u -> predU)
-        dist += (u -> distsU)
+        dist(vx)(vx) = 0
 
         // set initial/original distances
-        for((v, w) <- adjs) {
-          dist(u)(v) = w
-          pred(u)(v) = u
+        for((vy, w) <- adjs) {
+          dist(vx)(vy) = w
+          pred(vx)(vy) = vx
         }
 
       }
