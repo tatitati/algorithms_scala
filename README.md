@@ -92,6 +92,9 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [x] ~Dijkstra~
 - [x] ~Bellman Ford~
 - [ ] Mathematical analysis
+###  All pairs shortest paths
+- [x] ~Floyd-Warshall~
+- [ ] Johnson's
 ###   Minimum Spanning Tree (MST)
 - [ ] Kruskal 
 - [x] ~Prim (with Min Priority Queue + Adjacency matrix)~
@@ -101,10 +104,6 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] ....
 ###   Classifying edges
 - [ ] ....
-###  All pairs shortest paths
-- [ ] Floyd-Warshall :fire:
-- [ ] Johnson's
-
 
 
 
