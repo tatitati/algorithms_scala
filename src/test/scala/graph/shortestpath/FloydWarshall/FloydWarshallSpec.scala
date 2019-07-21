@@ -6,7 +6,12 @@ import scala.collection.mutable.ListMap
 
 class FloydWarshallSpec extends FunSuite {
 
-  def floydWarshall(G: ListMap[String, ListMap[String, Int]]): (ListMap[String, ListMap[String, Double]], ListMap[String, ListMap[String, String]]) = {
+  def floydWarshall(G: ListMap[String, ListMap[String, Int]]):
+        (
+          ListMap[String, ListMap[String, Double]],
+          ListMap[String, ListMap[String, String]]
+        )
+      = {
       val infinity = Double.PositiveInfinity
       var dist: ListMap[String, ListMap[String, Double]] = ListMap()
       var pred: ListMap[String, ListMap[String, String]] = ListMap()
