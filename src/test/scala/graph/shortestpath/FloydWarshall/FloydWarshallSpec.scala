@@ -3,7 +3,6 @@ package graph.shortestpath.FloydWarshall
 import org.scalatest.FunSuite
 import scala.collection.mutable.Map
 import scala.collection.immutable.ListMap
-import scala.collection.mutable.ArrayBuffer
 
 class FloydWarshallSpec extends FunSuite {
 
@@ -17,26 +16,42 @@ class FloydWarshallSpec extends FunSuite {
         var distsU: Map[String, Double] = Map()
         var predU: Map[String, String] = Map()
 
-        for((u, _) <- G) {
-          if (u == u) {
-            distsU += (u -> 0)
+        for((v, _) <- G) {
+          if (u == v) {
+            distsU += (v -> 0)
           } else {
-            distsU += (u -> infinity)
+            distsU += (v -> infinity)
           }
 
-          predU += (u -> "")
+          predU += (v -> "")
         }
 
         pred += (u -> predU)
         dist += (u -> distsU)
 
         // set initial/original distances
+        println(dist)
         for((v, w) <- adjs) {
           dist(u).update(v, w)
+          pred(u).update(v, u)
         }
 
-        // main 
       }
+
+      // main
+      for((through_k, _) <- G) {
+        for((u, _) <- G) {
+          for((v, _) <- G) {
+              var newdist = dist(u)(through_k) + dist(through_k)(v)
+              if (newdist < dist(u)(v)) {
+                dist(u).update(v, newdist)
+                pred(u).update(v, pred(through_k)(v))
+              }
+          }
+        }
+      }
+
+
   }
 
   test("Floyd-Warshall"){
