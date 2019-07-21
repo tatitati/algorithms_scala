@@ -102,7 +102,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 ###   Classifying edges
 - [ ] ....
 ###  All pairs shortest paths
-- [ ] Floyd-Warshall :fire:
+- [x] ~Floyd-Warshall~
 - [ ] Johnson's
 
 
