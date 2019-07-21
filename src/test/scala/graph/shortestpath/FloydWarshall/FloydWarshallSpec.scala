@@ -36,8 +36,8 @@ class FloydWarshallSpec extends FunSuite {
 
         // set initial/original distances
         for((v, w) <- adjs) {
-          dist(u).update(v, w)
-          pred(u).update(v, u)
+          dist(u)(v) = w
+          pred(u)(v) = u
         }
 
       }
@@ -48,8 +48,8 @@ class FloydWarshallSpec extends FunSuite {
           for((v, _) <- G) {
               var newdist = dist(u)(through_k) + dist(through_k)(v)
               if (newdist < dist(u)(v)) {
-                dist(u).update(v, newdist)
-                pred(u).update(v, pred(through_k)(v))
+                dist(u)(v) = newdist
+                pred(u)(v) = pred(through_k)(v)
               }
           }
         }
