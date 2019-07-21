@@ -14,6 +14,10 @@
 - [ ] Right Rotation
 - [ ] Mathematical analysis
 
+
+### Hash map
+- [ ] Bloom filters :fire::fire:
+
 ### Heap
 - [ ] Heap Tree :fire:
 - [ ] Mathematical analysis
@@ -97,13 +101,18 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [ ] ....
 ###   Classifying edges
 - [ ] ....
+###  All pairs shortest paths
+- [ ] Floyd-Warshall :fire:
+- [ ] Johnson's
+
+
 
 
 ## [Dynamic Programming](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming)
 - [x] ~Fibonnaci Down-Top~
 - [x] ~Fibonnaci Top-Down~
 - [ ] Change coins
-- [ ] Cutting rod
+- [ ] Cutting rod :fire:
 - [x] ~1/0 Knapsack~
 - [ ] Matrix multiplication
 - [ ] Longest Common substring
@@ -121,9 +130,6 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 - [ ] ...
 
-## Bloom filters
-
-- [ ] ...
 
 ## LineSweep
 
