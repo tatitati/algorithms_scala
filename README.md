@@ -63,7 +63,7 @@ https://github.com/tatitati/algorithms/tree/master/Sort
 - [ ] Mathematical analysis
 
  
-## Recursion
+## :black_circle: Recursion
 - [x] ~Fibonnaci~
 - [ ] ...
 - [ ] Mathematical analysis
@@ -133,11 +133,11 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 - [ ] K-means
 
 
-## Linear Programming
+## :black_circle: Linear Programming
 
 - [ ] ...
 
-## Machine learning
+## :black_circle: Machine learning
 
 - [ ] Decission Trees
 - [ ] Random Forest
