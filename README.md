@@ -123,7 +123,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming
 
 
-## Computational Geometry 
+## [Computational Geometry](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/ComputationalGeometry)
 
 - [ ] Convex Hull
 - [ ] LineSweep
