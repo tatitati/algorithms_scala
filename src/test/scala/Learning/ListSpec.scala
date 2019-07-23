@@ -21,4 +21,21 @@ class ListSpec extends FunSuite {
 
     assert(a == List("aa", "bb", "cc"))
   }
+
+  test("Can append List to a List") {
+    var all: List[List[String]] = List(
+      List("aa", "bb"),
+      List("cc", "dd")
+    )
+
+    val c = all :+ List("ee", "ff")
+
+    println(all)
+
+    assert(c == List(
+      List("aa", "bb"),
+      List("cc", "dd"),
+      List("ee", "ff")
+    ))
+  }
 }
