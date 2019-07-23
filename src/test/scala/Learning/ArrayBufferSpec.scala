@@ -22,4 +22,19 @@ class ArrayBufferSpec extends FunSuite {
 
     assert(a == ArrayBuffer("aa", "bb", "cc"))
   }
+
+  test("Can append List to a List") {
+    var all: ArrayBuffer[ArrayBuffer[String]] = ArrayBuffer(
+      ArrayBuffer("aa", "bb"),
+      ArrayBuffer("cc", "dd")
+    )
+
+    all += ArrayBuffer("ee", "ff")
+
+    assert(all == ArrayBuffer(
+      ArrayBuffer("aa", "bb"),
+      ArrayBuffer("cc", "dd"),
+      ArrayBuffer("ee", "ff")
+    ))
+  }
 }
