@@ -122,21 +122,18 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming
 
+
+## Computational Geometry 
+
+- [ ] Convex Hull
+- [ ] LineSweep
+
 ## Clustering (Spacial tree)
 
 - [ ] K-means
 
 
 ## Linear Programming
-
-- [ ] ...
-
-
-## LineSweep
-
-- [ ] ...
-
-## Convex Hull
 
 - [ ] ...
 
