@@ -5,6 +5,14 @@ import org.scalatest.FunSuite
 class ConvexHullSpec extends FunSuite {
 
     def convexhull(P: List[List[Int]]): Unit = {
+      val n = P.size
+      var upper = List(P(0), P(1))
+
+      for(i <- 2 to n-1) {
+        upper ++: P(i)
+      }
+
+      println(upper)
 
     }
 
