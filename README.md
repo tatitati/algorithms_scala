@@ -1,4 +1,4 @@
-## [Data structures](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/DataStructure)
+## :black_circle: [Data structures](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/DataStructure)
 ### Binary Tree
 - [x] ~Traversal INORDER~
 - [ ] Traversal PREORDER
@@ -43,7 +43,7 @@
  - [ ] Circular
  - [ ] Mathematical analysis
  
-## Sort
+## :black_circle: Sort
 
 - [x] ~Bubble sort~
 - [x] ~Insertio sort~
@@ -57,7 +57,7 @@
 
 https://github.com/tatitati/algorithms/tree/master/Sort
 
-## Search
+## :black_circle: Search
 
 - [ ] Binary search
 - [ ] Mathematical analysis
@@ -79,7 +79,7 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/recursio
 
 https://github.com/tatitati/algorithms/tree/master/Backtracking
 
-## [Graphs](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/graph)
+## :black_circle: [Graphs](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/graph)
 ###   Traversal 
 - [x] ~Breath first (iterative, with queue)~
 - [x] ~Depth first (iterative, with stack)~
@@ -109,7 +109,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 
 
 
-## [Dynamic Programming](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming)
+## :black_circle: [Dynamic Programming](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming)
 - [x] ~Fibonnaci Down-Top~
 - [x] ~Fibonnaci Top-Down~
 - [ ] Change coins
@@ -123,7 +123,7 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicProgramming
 
 
-## [Computational Geometry](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/ComputationalGeometry)
+## :black_circle: [Computational Geometry](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/ComputationalGeometry)
 
 - [ ] Convex Hull
 - [ ] LineSweep
