@@ -22,7 +22,7 @@ class ListSpec extends FunSuite {
     assert(a == List("aa", "bb", "cc"))
   }
 
-  test("Can append List to a List") {
+  test("Can append List to a List, BUT NO IN PLACE, LIST ARE IMMUTABLE") {
     var all: List[List[String]] = List(
       List("aa", "bb"),
       List("cc", "dd")

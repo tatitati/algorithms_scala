@@ -2,14 +2,16 @@ package ComputationalGeometry
 
 import org.scalatest.FunSuite
 
+import scala.collection.mutable.ArrayBuffer
+
 class ConvexHullSpec extends FunSuite {
 
     def convexhull(P: List[List[Int]]): Unit = {
       val n = P.size
-      var upper: List[List[Int]] = List(P(0), P(1))
+      var upper: ArrayBuffer[List[Int]] = ArrayBuffer(P(0), P(1))
 
       for(i <- 2 to n-1) {
-        upper :: P(i)
+        upper += P(i)
       }
 
       println(upper)
