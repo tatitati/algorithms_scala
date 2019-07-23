@@ -100,6 +100,8 @@ https://github.com/tatitati/algorithms/tree/master/Backtracking
 - [x] ~Prim (with Min Priority Queue + Adjacency matrix)~
 - [ ] Prim (with node-color)
 - [ ] Mathematical analysis
+### Maximum Flow
+- [ ] Ford-Fulkerson
 ###   Component strongly connected 
 - [ ] ....
 ###   Classifying edges
