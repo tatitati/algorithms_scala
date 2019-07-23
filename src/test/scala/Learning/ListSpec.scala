@@ -13,4 +13,12 @@ class ListSpec extends FunSuite {
     assert(a == List("aa", "bb"))
     assert(c == List("aa", "bb", "cc"))
   }
+
+  test("I can add items to a list with ++=") {
+    var a = List("aa", "bb")
+
+    a ++= List("cc")
+
+    assert(a == List("aa", "bb", "cc"))
+  }
 }
