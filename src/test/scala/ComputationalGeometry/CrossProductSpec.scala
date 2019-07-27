@@ -19,7 +19,7 @@ class CrossProductSpec extends FunSuite {
     val p1 = List(2, 4)
     val p2 = List(4, 1)
 
-    assert(crossproductTwoPoints(p2, p1) > 0)
+    assert(crossproductTwoPoints(p2, p1) > 0) // p2 x p1 === from p1 to p2...
   }
 
   test("cross product of two segments turning LEFT in p2") {
