@@ -125,7 +125,7 @@ https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/dynamicP
 
 ## :black_circle: [Computational Geometry](https://github.com/tatitati/algorithms_scala/tree/master/src/test/scala/ComputationalGeometry)
 
-- [ ] Convex Hull
+- [ ] Convex Hull :fire:
 - [ ] LineSweep
 
 ## Clustering (Spacial tree)
