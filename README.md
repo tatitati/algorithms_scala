@@ -16,7 +16,7 @@
 
 
 ### Hash map
-- [ ] Bloom filters :fire::fire:
+- [ ] Bloom filters
 
 ### Heap
 - [ ] Heap Tree :fire:
