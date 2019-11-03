@@ -18,14 +18,14 @@ class BinarySpec extends FunSuite {
       }
     }
 
-    def getFirstZeroFromStart(chars: String): Int = {
+    def getIdxFirstZeroFromStart(chars: String): Int = {
       val a = initSize(chars)
       (a.length - a.reverse.indexOfSlice("0")) - 1
     }
 
     def increase(number: String): String = {
       val validA = initSize(number)
-      val idx = getFirstZeroFromStart(validA)
+      val idx = getIdxFirstZeroFromStart(validA)
 
       validA.zipWithIndex.map{ case (v, ix) =>
         if(ix >= idx) {
@@ -48,12 +48,12 @@ class BinarySpec extends FunSuite {
       val a = "101101"
       val b = "011111"
       val c = "11111"
-      assert(4 == getFirstZeroFromStart(a))
-      assert(0 == getFirstZeroFromStart(b))
-      assert(0 == getFirstZeroFromStart(c))
+      assert(4 == getIdxFirstZeroFromStart(a))
+      assert(0 == getIdxFirstZeroFromStart(b))
+      assert(0 == getIdxFirstZeroFromStart(c))
     }
 
-    test("can incrase by 1"){
+    test("solution"){
       assert("1010" == increase("1001"))
       assert("10000" == increase("1111"))
       assert("0001" == increase("0000"))
