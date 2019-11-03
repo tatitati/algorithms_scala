@@ -53,7 +53,7 @@ class BinarySpec extends FunSuite {
       assert(0 == getFirstZeroFromStart(c))
     }
 
-    test("can Invert"){
+    test("can incrase by 1"){
       assert("1010" == increase("1001"))
       assert("10000" == increase("1111"))
       assert("0001" == increase("0000"))
