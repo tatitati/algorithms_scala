@@ -26,7 +26,7 @@ class MapSpec extends FunSuite {
     ) == a ++ Map("d" -> List("DD1", "DD2", "DD3")))
   }
 
-  test("filter keys") {
+  test("Can filter by keys") {
     val a = Map(
       "A"    -> "sumi",
       "B"     -> "2",
