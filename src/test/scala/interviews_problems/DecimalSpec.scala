@@ -19,24 +19,25 @@ class DecimalSpec extends FunSuite {
     }
 
     @tailrec
-    private def increaseDigit(num: String, lastSum: Int = 0, resultAcc: String = ""): String = {
+    private def increaseDigit(num: String, rest: Int = 0, resultAcc: String = ""): String = {
       num.toList.reverse match {
         case Nil => resultAcc
         case n => {
-          val newLastSum = {
-            if (lastSum == 10 || lastSum == 0) {
-              n.head.asDigit + 1
-            } else n.head.asDigit
+          if (rest > 0 || resultAcc.isEmpty) {
+            val (representation, newrest) = sum1(n.head)
+            increaseDigit(n.tail.reverse.mkString(""), newrest, representation++resultAcc)
+          } else {
+            increaseDigit(n.tail.reverse.mkString(""), 0, n.head.toString++resultAcc)
           }
-
-          val newResultAcc = {
-            if (newLastSum == 10) {
-              "0" ++ resultAcc
-            } else newLastSum.toString ++ resultAcc
-          }
-
-          increaseDigit(n.tail.reverse.mkString(""), newLastSum, newResultAcc)
         }
+      }
+    }
+
+    def sum1(digit: Char): (String,Int) = {
+      if(digit == '9'){
+        ("0", 1)
+      } else {
+        ((1 + digit.asDigit).toString, 0)
       }
     }
 
@@ -66,6 +67,11 @@ class DecimalSpec extends FunSuite {
       assert("130" == solution("129"))
       assert("1" == solution("0"))
       assert("1000" == solution("999"))
+    }
+
+    test("add1") {
+      assert(("0", 1) ==  sum1('9'), "9+1 equals 0 and rest=1")
+      assert(("3", 0) ==  sum1('2'), "2+1 equals 3 and rest=0")
     }
 
 }
