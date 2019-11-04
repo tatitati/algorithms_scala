@@ -1,7 +1,6 @@
 package interviews_problems
 
 import org.scalatest.FunSuite
-
 import scala.annotation.tailrec
 
 class DecimalSpec extends FunSuite {
