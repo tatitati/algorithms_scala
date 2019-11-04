@@ -19,12 +19,30 @@ class DecimalSpec extends FunSuite {
     }
 
     @tailrec
-    def increaseDigit(num: String, sumAcc: String = "0"): String = {
-      num.reverse.head match {
-        case '9' =>
-        case _ && lastSum != 10 => _
-        case _ && lastSum == 10 => _ + 1
+    private def increaseDigit(num: String, lastSum: Int = 0, resultAcc: String = ""): String = {
+      num.toList.reverse match {
+        case Nil => resultAcc
+        case n => {
+          val newLastSum = {
+            if (lastSum == 10 || lastSum == 0) {
+              n.head.asDigit + 1
+            } else n.head.asDigit
+          }
+
+          val newResultAcc = {
+            if (newLastSum == 10) {
+              "0" ++ resultAcc
+            } else newLastSum.toString ++ resultAcc
+          }
+
+          increaseDigit(n.tail.reverse.mkString(""), newLastSum, newResultAcc)
+        }
       }
+    }
+
+    def solution(num: String): String = {
+      val resized = initSize(num)
+      increaseDigit(resized)
     }
 
 
@@ -42,12 +60,12 @@ class DecimalSpec extends FunSuite {
       assert("998" == initSize(b))
     }
 
-    test("solution"){
-      val a = "111"
-      val b = "129"
-      assert("222" == increaseDigit(a))
-      assert("130" == increaseDigit(b))
+    test("solution") {
+      assert("124" == solution("123"))
+      assert("121" == solution("120"))
+      assert("130" == solution("129"))
+      assert("1" == solution("0"))
+      assert("1000" == solution("999"))
     }
-
 
 }
