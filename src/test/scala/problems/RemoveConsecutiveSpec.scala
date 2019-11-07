@@ -37,6 +37,11 @@ class RemoveConsecutiveSpec extends FunSuite {
     assert(List('a, 'b, 'c, 'a, 'd, 'e) == recursive(mylist))
     assert(List('a, 'b, 'c, 'a, 'd, 'e) == tailrecursive(mylist))
     assert(List('a, 'b, 'c, 'a, 'd, 'e) == inFunctional(mylist))
+
+    val mylist1 = List(33, 34, 34,2, 342)
+    val mylist2 = List(1,2, 3, 4)
+
+    assert(List(List(33, 34, 34, 2, 342), 1, 2, 3, 4) == mylist1 +: mylist2)
   }
 
 }
