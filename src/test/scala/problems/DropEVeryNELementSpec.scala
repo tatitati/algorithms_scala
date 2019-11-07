@@ -34,7 +34,7 @@ class DropEVeryNELementSpec extends FunSuite {
   def functional[A](n: Int, l: List[A]): List[A] = {
     val r: List[(A, Int)] = l.zipWithIndex
     val r2: List[(A, Int)] = r.filter{ tuple =>
-      tuple._2 % n != 0
+      tuple._2 == 0 || (tuple._2 + 1) % (n + 1) != 0
     }
 
     r2.map(_._1)
