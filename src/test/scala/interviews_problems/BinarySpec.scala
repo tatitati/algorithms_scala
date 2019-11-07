@@ -23,7 +23,7 @@ class BinarySpec extends FunSuite {
       (a.length - a.reverse.indexOfSlice("0")) - 1
     }
 
-    def increase(number: String): String = {
+    def solution(number: String): String = {
       val validA = initSize(number)
       val idx = getIdxFirstZeroFromStart(validA)
 
@@ -54,9 +54,9 @@ class BinarySpec extends FunSuite {
     }
 
     test("solution"){
-      assert("1010" == increase("1001"))
-      assert("10000" == increase("1111"))
-      assert("0001" == increase("0000"))
-      assert("1" == increase("0"))
+      assert("1010" == solution("1001"))
+      assert("10000" == solution("1111"))
+      assert("0001" == solution("0000"))
+      assert("1" == solution("0"))
     }
 }
