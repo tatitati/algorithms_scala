@@ -5,30 +5,11 @@ import scala.annotation.tailrec
 
 class DecimalSpec extends FunSuite {
 
-    def isAll9(num: String): Boolean = {
-      num.filter(_ == '9').length == num.length
-    }
-
     def initSize(num: String): String = {
-      if(isAll9(num)) {
+      if(num.filter(_ == '9').length == num.length) {
         "0" ++ num
       } else {
         num
-      }
-    }
-
-    @tailrec
-    private def increaseDigit(num: String, rest: Int = 0, resultAcc: String = ""): String = {
-      num.toList.reverse match {
-        case Nil => resultAcc
-        case n => {
-          if (rest > 0 || resultAcc.isEmpty) {
-            val (representation, newrest) = sum1(n.head)
-            increaseDigit(n.tail.reverse.mkString(""), newrest, representation++resultAcc)
-          } else {
-            increaseDigit(n.tail.reverse.mkString(""), 0, n.head.toString++resultAcc)
-          }
-        }
       }
     }
 
@@ -41,16 +22,23 @@ class DecimalSpec extends FunSuite {
     }
 
     def solution(num: String): String = {
+      @tailrec
+      def repeat(num: String, rest: Int = 0, resultAcc: String = ""): String = {
+        num.toList.reverse match {
+          case Nil => resultAcc
+          case n => {
+            if (rest > 0 || resultAcc.isEmpty) {
+              val (representation, newrest) = sum1(n.head)
+              repeat(n.tail.reverse.mkString(""), newrest, representation++resultAcc)
+            } else {
+              repeat(n.tail.reverse.mkString(""), 0, n.head.toString++resultAcc)
+            }
+          }
+        }
+      }
+
       val resized = initSize(num)
-      increaseDigit(resized)
-    }
-
-
-    test("can figure out how many 9 are in the number") {
-      val a = "999"
-      val b = "998"
-      assert(true == isAll9(a))
-      assert(false == isAll9(b))
+      repeat(resized)
     }
 
     test("Can determine the right size of the results") {
