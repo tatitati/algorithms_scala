@@ -31,9 +31,19 @@ class DropEVeryNELementSpec extends FunSuite {
     repeat(n, l, List())
   }
 
+  def functional[A](n: Int, l: List[A]): List[A] = {
+    val r: List[(A, Int)] = l.zipWithIndex
+    val r2: List[(A, Int)] = r.filter{ tuple =>
+      tuple._2 % n != 0
+    }
+
+    r2.map(_._1)
+  }
+
   test("test") {
     val mylist = List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)
     assert(List('a, 'b, 'c, 'e, 'f, 'g, 'i, 'j, 'k) == recursive(3, mylist))
     assert(List('a, 'b, 'c, 'e, 'f, 'g, 'i, 'j, 'k) == tailRecursive(3, mylist))
+    assert(List('a, 'b, 'c, 'e, 'f, 'g, 'i, 'j, 'k) == functional(3, mylist))
   }
 }
