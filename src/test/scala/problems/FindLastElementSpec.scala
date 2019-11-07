@@ -8,7 +8,7 @@ import org.scalatest.FunSuite
 //     res0: Int =
 
 class FindLastElementSpec extends FunSuite {
-  
+
     def builtinLast[A](l: List[A]): A = l.last
 
     def recursiveLast[A](l: List[A]): A = {
@@ -19,7 +19,7 @@ class FindLastElementSpec extends FunSuite {
       }
     }
 
-  test("last builtin") {
+  test("last") {
     val mylist = List(2, 4, 6, 33, 55, 66, 22)
     assert(22 == builtinLast(mylist))
     assert(22 == recursiveLast(mylist))
