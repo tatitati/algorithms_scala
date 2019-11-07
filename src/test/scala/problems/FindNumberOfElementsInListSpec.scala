@@ -25,9 +25,14 @@ class FindNumberOfElementsInListSpec extends FunSuite {
       repeat(lst, 0)
     }
 
+    def functional(lst: List[Any]) : Int = {
+      lst.foldLeft(0) { (acc, item) => acc + 1} // from left to right....
+    }
+
     test("test") {
       val mylist = List(2, 4, 6, 33, 55, 66, 22)
       assert(7 == recursive(mylist))
       assert(7 == tailRecursive(mylist))
+      assert(7 == functional(mylist))
     }
 }
