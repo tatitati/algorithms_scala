@@ -1,7 +1,6 @@
 package problems
 
 import org.scalatest.FunSuite
-
 import scala.annotation.tailrec
 
 // P17 (*) Split a list into two parts.
@@ -22,7 +21,6 @@ class SplitListSpec extends FunSuite {
         (h :: pre, post)
     }
   }
-
 
   def tailrecursive[A](n: Int, l: List[A]): (List[A], List[A]) = {
     @tailrec

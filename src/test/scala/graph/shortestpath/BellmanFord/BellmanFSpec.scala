@@ -7,53 +7,37 @@ import scala.collection.SortedMap
 import scala.collection.mutable.ListMap
 import scala.collection.mutable.ArrayBuffer
 
+object Edge {
+  def apply(givenSpec: String): Edge = {
+    val Array(fromto , in) = givenSpec.split("/")
+    val Array(from , to) = fromto.split(">")
+    Edge(from ,to , in.toInt)
+  }
+}
 
-case class Edge(
-                 from: String,
-                 to: String,
-                 w: Double
-)
+object Node {
+  def apply(nodeName: String, in: Double, givenEdges: List[String] = List[String]()): Node = {
+      Node(nodeName, givenEdges.map(Edge(_)), in)
+  }
+}
 
-case class Vertex(
-                   id: String,
-                   var d: Double,
-                   edgesDest: List[Edge]
-)
+case class Edge(from: String, to: String, w: Double)
+case class Node(id: String, edgesDest: List[Edge], var d: Double)
 
 
 class BellmanFSpec extends FunSuite {
 
   val inf = Double.PositiveInfinity
-  val graph: SortedMap[String, Vertex] = SortedMap(
-    "A" -> Vertex(
-      "A",
-      0,
-      List(Edge("A", "B", -1), Edge("A", "C", 4)) // from this vertex, I can go (through these edges) to these vertexes
-    ),
-    "B" -> Vertex(
-      "B",
-      inf,
-      List(Edge("B", "C", 3),Edge("B", "D", 2), Edge("B", "E", 2))
-    ),
-    "C" -> Vertex(
-      "C",
-      inf,
-      List()
-    ),
-    "D" -> Vertex(
-      "D",
-      inf,
-      List(Edge("D", "B", 1),Edge("D", "C", 5))
-    ),
-    "E" -> Vertex(
-      "E",
-      inf,
-      List(Edge("E", "D", -3))
-    )
+  val graph: SortedMap[String, Node] = SortedMap(
+    "A" -> Node("A", 0,   List("A>B/-1", "A>C/4")),
+    "B" -> Node("B", inf, List("B>C/3", "B>D/2", "B>E/2")),
+    "C" -> Node("C", inf),
+    "D" -> Node("D", inf, List("D>B/1", "D>C/5")),
+    "E" -> Node("E", inf, List("E>D/-3"))
   )
 
 
-  def bellmanford(graph: SortedMap[String, Vertex]) = {
+  def bellmanford(graph: SortedMap[String, Node]) = {
     // relax
     for((keyVertex, u) <- graph) {
       for(edge <- u.edgesDest) { // u = current vertex (from vertex)
@@ -88,5 +72,22 @@ class BellmanFSpec extends FunSuite {
       "E" -> 1.0
       )
     )
+  }
+
+  test("I can get the required information from a friendly list"){
+    val edge1 = Edge("p" ,"q" , 90)
+    val edge2 = Edge("p>q/90")
+    assert(edge1 == edge2)
+  }
+
+  test("Can create Nodes as well"){
+    val n = Node("A", 0, List("p>q/90", "p>r/100"))
+
+    assert(Node(
+      "A",
+      List(Edge("p","q",90.0), Edge("p","r",100.0)),
+      0.0
+    ) == n)
+
   }
 }
